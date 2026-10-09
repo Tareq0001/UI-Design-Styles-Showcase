@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>استوديو أنماط التصميم البصري | Archetype UI Studio</title>
-  <meta name="description" content="استوديو تفاعلي يستعرض 12 نمطاً وتوجهاً جذرياً في تصميم واجهات المستخدم والويب مع محاكاة حية وتشريح هندسي">
+  <title>استوديو أنماط التصميم البصري | 300 نمط وتوجه معماري</title>
+  <meta name="description" content="الموسوعة البصرية الكبرى لتصاميم واجهات المستخدم والويب: 300 نمط تصميم مفصل مع تحول حي وتطبيقي لكامل الموقع">
   
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/themes.css">
 </head>
-<body dir="rtl">
+<body dir="rtl" class="theme-neo-asiri">
 
   <!-- TOP NAVIGATION -->
   <header class="studio-nav">
@@ -22,8 +22,8 @@
       <div class="brand-text">
         <h1 data-i18n="appTitle">استوديو أنماط التصميم البصري</h1>
         <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 2px;">
-          <span class="brand-badge" data-i18n="appBadge">12 نموذجاً جذرياً</span>
-          <span style="font-size: 0.72rem; color: #94A3B8;">أ. طارق ابوعشي</span>
+          <span class="brand-badge" data-i18n="appBadge">300 نمط تصميم موثق</span>
+          <span style="font-size: 0.72rem; color: var(--studio-muted);">أ. طارق ابوعشي</span>
         </div>
       </div>
     </div>
@@ -31,6 +31,7 @@
     <div class="nav-actions">
       <button class="nav-btn" id="sfxToggleBtn" title="تفعيل / كتم المؤثرات الصوتية">🔊 SFX</button>
       <button class="nav-btn" id="compareModeBtn" data-i18n="compareModeBtn">مقارنة نمطين جنباً إلى جنب</button>
+      <a href="#encyclopediaSection" class="nav-btn" style="text-decoration: none;" data-i18n="navBrowseAll">📚 تصفح الـ 300 نمط</a>
       <button class="nav-btn" id="langToggleBtn">English</button>
       <a href="https://github.com/Tareq0001/UI-Design-Styles-Showcase" target="_blank" rel="noopener noreferrer" class="github-link" title="مستودع GitHub">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -40,14 +41,30 @@
     </div>
   </header>
 
-  <!-- STYLE SELECTOR CAROUSEL -->
+  <!-- ACTIVE FULL-SITE MORPH BANNER -->
+  <aside class="active-morph-banner">
+    <div class="morph-indicator">
+      <div class="morph-pulse-dot"></div>
+      <div>
+        <div class="morph-text-title" id="activeMorphTitle">النمط المطبق حالياً على الموقع كاملاً: النمط العسيري المعماري</div>
+        <div class="morph-text-subtitle" id="activeMorphSubtitle">يتحول كامل الموقع فوراً (الألوان، الخطوط، الحدود، والفيزياء) عند اختيار أي نمط</div>
+      </div>
+    </div>
+    <div>
+      <a href="#encyclopediaSection" class="nav-btn" style="text-decoration: none; font-size: 0.78rem;">
+        <span>🔍 اختر نمطاً آخر من الـ 300</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- STYLE SELECTOR CAROUSEL (FLAGSHIP 12 PRESETS) -->
   <section class="selector-bar-wrapper">
     <div class="selector-track" id="selectorTrack">
       <!-- Generated dynamically by app.js -->
     </div>
   </section>
 
-  <!-- MAIN STUDIO WORKBENCH (DEFAULT VIEW) -->
+  <!-- MAIN STUDIO WORKBENCH (FLAGSHIP INTERACTIVE SANDBOX) -->
   <main class="workbench-container" id="studioWorkbench">
     
     <!-- LEFT: STAGE COLUMN -->
@@ -61,7 +78,7 @@
           <button class="scenario-tab" data-scenario="media" data-i18n="tabMedia">🎵 مشغل وسائط تفاعلي</button>
         </div>
         <div class="canvas-viewport-info">
-          <span>● محاكاة فيزيائية حية</span>
+          <span>● محاكاة فيزيائية حية متوافقة مع النمط</span>
         </div>
       </div>
 
@@ -84,7 +101,7 @@
           </div>
           <div class="lab-item">
             <span class="lab-item-label">محدد النسبة التفاعلي (<span id="labRangeVal">68</span>%):</span>
-            <input type="range" min="0" max="100" value="68" id="labRange" style="width: 100%; accent-color: var(--theme-accent);">
+            <input type="range" min="0" max="100" value="68" id="labRange" style="width: 100%; accent-color: var(--studio-accent);">
           </div>
         </div>
       </section>
@@ -136,8 +153,6 @@
 
   <!-- SPLIT COMPARE MODE (SIDE-BY-SIDE) -->
   <section class="compare-container" id="compareContainer">
-    
-    <!-- LEFT PANEL A -->
     <div class="compare-card">
       <div class="compare-header">
         <span style="font-weight: 800; font-size: 0.95rem;">النمط الأول (A):</span>
@@ -146,7 +161,6 @@
       <div class="stage-canvas" id="compareStageA" style="min-height: 520px;"></div>
     </div>
 
-    <!-- RIGHT PANEL B -->
     <div class="compare-card">
       <div class="compare-header">
         <span style="font-weight: 800; font-size: 0.95rem;">النمط الثاني (B):</span>
@@ -154,8 +168,104 @@
       </div>
       <div class="stage-canvas" id="compareStageB" style="min-height: 520px;"></div>
     </div>
+  </section>
+
+  <!-- ==========================================================================
+       MEGA 300-STYLES VISUAL ENCYCLOPEDIA & CATALOG
+       ========================================================================== -->
+  <section class="encyclopedia-section" id="encyclopediaSection">
+    
+    <div class="encyclopedia-header-row">
+      <div class="encyclopedia-title-badge-row">
+        <h2 class="encyclopedia-title">📚 الموسوعة البصرية الكبرى: 300 نمط وفلسفة تصميم</h2>
+        <span class="encyclopedia-counter-pill" id="catalogCounterBadge">300 نمط موثق</span>
+      </div>
+      <p class="encyclopedia-desc">
+        مرجع بصري وهندسي شامل لكافة مدارس وتيارات تصميم واجهات المستخدم، الحركات الفنية التاريخية، ثقافات الشعوب، والتقنيات المستقبلية. يمكنك فحص أي نمط أو تطبيقه على كامل الموقع بنقرة واحدة!
+      </p>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="encyclopedia-controls">
+      <div class="search-box-row">
+        <input 
+          type="text" 
+          class="search-input-box" 
+          id="encyclopediaSearchInput" 
+          placeholder="🔍 ابحث بالاسم، العصر، الكلمات المفتاحية، أو مجال الاستخدام (مثال: عسيري، نيون، سويسري، خشب، Y2K)..."
+        >
+        <button class="nav-btn" id="clearSearchBtn" style="display: none;">مسح</button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-pills-row" id="filterPillsRow">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+
+    <!-- 300 Styles Dynamic Grid -->
+    <div class="encyclopedia-grid" id="encyclopediaGrid">
+      <!-- 300 Cards injected by app.js -->
+    </div>
 
   </section>
+
+  <!-- SPEC DETAIL MODAL / DRAWER -->
+  <div class="spec-modal-overlay" id="specModalOverlay">
+    <div class="spec-modal-dialog" id="specModalDialog">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      <div class="modal-header-colors" id="modalColorStripes"></div>
+      
+      <div class="modal-content-body">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+          <div>
+            <span class="card-index-pill" id="modalNumPill">#001</span>
+            <span class="card-cat-tag" id="modalCatTag">الفئة</span>
+            <span class="card-era-tag" id="modalEraTag">العصر</span>
+          </div>
+        </div>
+
+        <div>
+          <h2 id="modalTitleAr" style="font-size: 1.6rem; font-weight: 800; line-height: 1.3;">اسم النمط بالعربية</h2>
+          <div id="modalTitleEn" style="font-size: 0.95rem; color: var(--studio-muted); font-family: 'Inter', sans-serif;">English Archetype Name</div>
+        </div>
+
+        <!-- Palette Swatches with click to copy -->
+        <div>
+          <h4 style="font-size: 0.88rem; color: var(--studio-muted); margin-bottom: 0.5rem;">لوحة الألوان المعتمدة (انقر لنسخ كود اللون HEX):</h4>
+          <div class="card-swatches-strip" id="modalSwatchesStrip" style="height: 36px;"></div>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.88rem; color: var(--studio-muted); margin-bottom: 0.35rem;">عائلة الخطوط الموصى بها:</h4>
+          <code id="modalFontCode" style="background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 6px; color: #A5B4FC; font-family: monospace;"></code>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.88rem; color: var(--studio-muted); margin-bottom: 0.35rem;">الملامح والسمات البصرية المميزة:</h4>
+          <p id="modalTraitsText" style="line-height: 1.6; color: #CBD5E1; font-size: 0.92rem;"></p>
+        </div>
+
+        <div class="rules-box" id="modalBestForBox"></div>
+
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+            <h4 style="font-size: 0.88rem; color: var(--studio-muted);">كود الـ CSS الجوهري للنمط:</h4>
+            <button class="copy-btn" id="modalCopyCssBtn">نسخ كود CSS</button>
+          </div>
+          <div class="code-snippet-box">
+            <code id="modalCssCode"></code>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+          <button class="btn-primary" id="modalApplySiteBtn" style="flex: 1; padding: 0.85rem;">
+            <span>🎨 تطبيق هذا النمط على الموقع كاملاً الآن</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- TOAST NOTIFICATION -->
   <div class="toast-notice" id="toastNotice"></div>
@@ -164,12 +274,13 @@
   <footer class="studio-footer">
     <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
       <div><strong>استوديو أنماط التصميم البصري (Archetype UI Studio)</strong> — تطوير وهندسة <strong>أ. طارق ابوعشي</strong></div>
-      <div style="opacity: 0.75; font-size: 0.78rem;">منصة مفتوحة المصدر تستعرض 12 فلسفة بصرية جذرية لواجهات الويب الحديثة والكلاسيكية</div>
+      <div style="opacity: 0.75; font-size: 0.78rem;">المرجع البصري الأكبر عالمياً: 300 فلسفة ونمط تصميم لواجهات المستخدم والويب الحديثة والكلاسيكية</div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="scripts/data.js"></script>
+  <script src="scripts/data-300.js"></script>
   <script src="scripts/app.js"></script>
 </body>
 </html>

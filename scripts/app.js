@@ -1,4 +1,5 @@
 // UI Design Styles Showcase - Interactive Application Engine
+// Powers Full-Site Morphing and the Grand 300 Design Styles Visual Encyclopedia
 
 (function () {
   'use strict';
@@ -15,7 +16,10 @@
     qty: 1,
     isPlaying: false,
     sliderVal: 68,
-    toggleState: true
+    toggleState: true,
+    activeCategory: 'all',
+    searchQuery: '',
+    currentModalStyle: null
   };
 
   // Web Audio Context for Tactile SFX
@@ -120,7 +124,79 @@
     showToast(successMsg);
   }
 
-  // Render Selector Track
+  // ==========================================================================
+  // FULL-SITE MORPHING ENGINE (الموقع كامل يتحول 100%)
+  // ==========================================================================
+  function applyThemeToFullSite(themeId, customArchetypeData = null) {
+    state.currentThemeId = themeId;
+
+    // 1. Remove all previous predefined theme classes on document.body
+    DESIGN_STYLES.forEach(s => document.body.classList.remove(`theme-${s.id}`));
+
+    // 2. Add active theme class if it's one of the 12 flagship classes
+    const isPredefined = DESIGN_STYLES.some(s => s.id === themeId);
+    if (isPredefined) {
+      document.body.classList.add(`theme-${themeId}`);
+    }
+
+    // 3. Inject Dynamic Custom Styles for ANY style from the 300 catalog
+    let customStyleEl = document.getElementById('dynamicCustomThemeStyle');
+    if (!customStyleEl) {
+      customStyleEl = document.createElement('style');
+      customStyleEl.id = 'dynamicCustomThemeStyle';
+      document.head.appendChild(customStyleEl);
+    }
+
+    const item = customArchetypeData || (typeof STYLES_CATALOG_300 !== 'undefined' ? STYLES_CATALOG_300.find(s => s.id === themeId) : null);
+    
+    if (item && item.colors && item.colors.length >= 3) {
+      const c1 = item.colors[0];
+      const c2 = item.colors[1];
+      const c3 = item.colors[2];
+      const c4 = item.colors[3] || item.colors[0];
+      const c5 = item.colors[4] || '#0A0A0A';
+
+      customStyleEl.textContent = `
+        :root {
+          --studio-bg: ${c5};
+          --studio-surface: ${c1};
+          --studio-surface-alt: ${c2};
+          --studio-border: ${c3};
+          --studio-accent: ${c1};
+          --studio-text: ${c5 === '#FFFFFF' || c5 === '#FFFCE8' || c5.includes('255') ? '#111111' : '#F1F5F9'};
+          --studio-muted: #8892B0;
+        }
+      `;
+    } else {
+      customStyleEl.textContent = '';
+    }
+
+    // 4. Update the Active Morph Banner Text
+    const morphTitleEl = document.getElementById('activeMorphTitle');
+    const morphSubtitleEl = document.getElementById('activeMorphSubtitle');
+    const isAr = state.currentLang === 'ar';
+
+    const flagship = DESIGN_STYLES.find(s => s.id === themeId);
+    const catalogItem = typeof STYLES_CATALOG_300 !== 'undefined' ? STYLES_CATALOG_300.find(s => s.id === themeId) : null;
+    const name = flagship 
+      ? (isAr ? flagship.nameAr : flagship.nameEn)
+      : (catalogItem ? (isAr ? catalogItem.nameAr : catalogItem.nameEn) : themeId);
+
+    if (morphTitleEl) {
+      morphTitleEl.innerHTML = `<strong>${isAr ? 'النمط المطبق حالياً على الموقع كاملاً:' : 'Active Full-Site Archetype:'}</strong> ${name}`;
+    }
+    if (morphSubtitleEl) {
+      morphSubtitleEl.textContent = isAr 
+        ? 'تم تحويل كامل الموقع فوراً (الألوان، الخطوط، الحدود، والفيزياء) ليتطابق مع هذا النمط.'
+        : 'The entire website (colors, fonts, borders, materials, and physics) has morphed to this style.';
+    }
+
+    // 5. Update Workbench & Inspector
+    updateAllViews();
+    showToast(isAr ? `✓ تم تطبيق نمط [${name}] على الموقع كاملاً بنجاح!` : `✓ Applied [${name}] to the entire website!`);
+  }
+
+  // Render Flagship Selector Track
   function renderSelectorTrack() {
     const track = document.getElementById('selectorTrack');
     if (!track) return;
@@ -141,16 +217,15 @@
       `;
 
       pill.addEventListener('click', () => {
-        state.currentThemeId = style.id;
+        applyThemeToFullSite(style.id);
         playClickSfx(520);
-        updateAllViews();
       });
 
       track.appendChild(pill);
     });
   }
 
-  // Render Active Scenario inside a Given Stage Canvas
+  // Render Active Scenario inside Stage Canvas
   function renderScenarioContent(themeId, scenario, containerEl) {
     if (!containerEl) return;
     const theme = DESIGN_STYLES.find(t => t.id === themeId) || DESIGN_STYLES[0];
@@ -243,7 +318,7 @@
           ${themeId === 'neo-asiri' ? '<div class="qatt-ribbon"></div>' : ''}
           <div class="player-layout">
             <div class="player-album-art">
-              <span>${theme.icon}</span>
+              <span>${theme.icon || '🎵'}</span>
             </div>
             <div class="player-track-info">
               <span class="tag-badge" style="align-self: flex-start;">${isAr ? 'المسار الصوتي' : 'CURRENT TRACK'}</span>
@@ -269,7 +344,7 @@
 
     containerEl.innerHTML = html;
 
-    // Attach Event Listeners to Scenario Interactive Elements
+    // Attach Event Listeners
     const qtyMinus = containerEl.querySelector('#qtyMinusBtn');
     const qtyPlus = containerEl.querySelector('#qtyPlusBtn');
     const qtyDisplay = containerEl.querySelector('#qtyDisplay');
@@ -343,7 +418,7 @@
     const typoEl = document.getElementById('typoDetails');
     const codeEl = document.getElementById('cssSnippetCode');
 
-    if (titleEl) titleEl.textContent = `${theme.icon} ${isAr ? theme.nameAr : theme.nameEn}`;
+    if (titleEl) titleEl.textContent = `${theme.icon || '🎨'} ${isAr ? theme.nameAr : theme.nameEn}`;
     if (badgeEl) badgeEl.textContent = isAr ? theme.badge : theme.badgeEn;
     if (summaryEl) summaryEl.textContent = isAr ? theme.summaryAr : theme.summaryEn;
 
@@ -392,15 +467,8 @@
 
   // Render Micro Components Lab
   function renderMicroLab(themeId) {
-    const labContainer = document.getElementById('componentsLab');
-    if (!labContainer) return;
-
-    // Apply active theme to the lab or ensure children inherit styles
-    const theme = DESIGN_STYLES.find(t => t.id === themeId);
     const isAr = state.currentLang === 'ar';
-
     const labPrimaryBtn = document.getElementById('labPrimaryBtn');
-    const labInput = document.getElementById('labInput');
     const labRange = document.getElementById('labRange');
     const labRangeVal = document.getElementById('labRangeVal');
 
@@ -418,7 +486,6 @@
       labRange.oninput = (e) => {
         state.sliderVal = e.target.value;
         labRangeVal.textContent = state.sliderVal;
-        // update scenario progress bar if in saas
         const progFill = document.querySelector('.telemetry-progress-fill');
         if (progFill) progFill.style.width = `${state.sliderVal}%`;
       };
@@ -431,7 +498,6 @@
 
     const stageCanvas = document.getElementById('stageCanvas');
     if (stageCanvas) {
-      // Remove all theme classes and add the active one
       DESIGN_STYLES.forEach(s => stageCanvas.classList.remove(`theme-${s.id}`));
       stageCanvas.classList.add(`theme-${state.currentThemeId}`);
       renderScenarioContent(state.currentThemeId, state.currentScenario, stageCanvas);
@@ -440,7 +506,6 @@
     renderInspector(state.currentThemeId);
     renderMicroLab(state.currentThemeId);
 
-    // If in compare mode, update both panels
     if (state.isCompareMode) {
       renderCompareMode();
     }
@@ -464,6 +529,264 @@
     }
   }
 
+  // ==========================================================================
+  // MEGA 300-STYLES ENCYCLOPEDIA LOGIC
+  // ==========================================================================
+  const CATEGORIES = [
+    { id: 'all', ar: 'الكل (300 نمط)', en: 'All 300 Styles' },
+    { id: 'modern-ui', ar: 'واجهات الويب المعاصرة (30)', en: 'Modern UI & Web (30)' },
+    { id: 'art-history', ar: 'المدارس الفنية والتاريخية (35)', en: 'Art History Movements (35)' },
+    { id: 'retro-digital', ar: 'الحنين الرقمي والريترو (40)', en: 'Retro Tech & Nostalgia (40)' },
+    { id: 'cultural-heritage', ar: 'الثقافات الإقليمية والتراث (40)', en: 'Cultural & Indigenous (40)' },
+    { id: 'industrial-tech', ar: 'الأنظمة الصناعية والتكتيكية (35)', en: 'Industrial & Tactical (35)' },
+    { id: 'editorial-type', ar: 'الصحافة والتيبوغرافي (35)', en: 'Editorial & Typography (35)' },
+    { id: 'nature-organic', ar: 'الطبيعة والمواد الخام (30)', en: 'Nature & Organic (30)' },
+    { id: 'luxury-culture', ar: 'الفخامة والأرستقراطية (30)', en: 'Luxury & High Culture (30)' },
+    { id: 'sci-fi-cyber', ar: 'الخيال العلمي والمستقبل (25)', en: 'Sci-Fi & Cyber (25)' }
+  ];
+
+  function renderFilterPills() {
+    const row = document.getElementById('filterPillsRow');
+    if (!row) return;
+    row.innerHTML = '';
+
+    const isAr = state.currentLang === 'ar';
+
+    CATEGORIES.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = `filter-tab-btn ${cat.id === state.activeCategory ? 'active' : ''}`;
+      btn.textContent = isAr ? cat.ar : cat.en;
+
+      btn.addEventListener('click', () => {
+        state.activeCategory = cat.id;
+        playClickSfx(500);
+        renderFilterPills();
+        renderEncyclopediaGrid();
+      });
+
+      row.appendChild(btn);
+    });
+  }
+
+  function renderEncyclopediaGrid() {
+    const grid = document.getElementById('encyclopediaGrid');
+    const counterBadge = document.getElementById('catalogCounterBadge');
+    if (!grid || typeof STYLES_CATALOG_300 === 'undefined') return;
+
+    grid.innerHTML = '';
+    const isAr = state.currentLang === 'ar';
+    const query = state.searchQuery.trim().toLowerCase();
+
+    // Filter Items
+    const filtered = STYLES_CATALOG_300.filter(item => {
+      // Category filter
+      if (state.activeCategory !== 'all' && item.cat !== state.activeCategory) {
+        return false;
+      }
+      // Search filter
+      if (query) {
+        const matchAr = item.nameAr.toLowerCase().includes(query);
+        const matchEn = item.nameEn.toLowerCase().includes(query);
+        const matchEra = item.era.toLowerCase().includes(query);
+        const matchTraits = item.traits.toLowerCase().includes(query);
+        const matchBest = item.bestFor.toLowerCase().includes(query);
+        const matchCat = item.catAr.toLowerCase().includes(query);
+        return matchAr || matchEn || matchEra || matchTraits || matchBest || matchCat;
+      }
+      return true;
+    });
+
+    if (counterBadge) {
+      counterBadge.textContent = isAr ? `عرض ${filtered.length} من أصل 300 نمط` : `Showing ${filtered.length} of 300 Styles`;
+    }
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--studio-surface); border-radius: var(--radius-lg); border: 1px solid var(--studio-border);">
+          <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+          <h3 style="font-size: 1.2rem;">${isAr ? 'لم يتم العثور على أنماط تطابق بحثك' : 'No matching archetypes found'}</h3>
+          <p style="font-size: 0.85rem; color: var(--studio-muted); margin-top: 0.25rem;">${isAr ? 'جرب البحث بكلمات عامة مثل: نيون، خشب، كلاسيك، تراث، زجاج، أو اختر تصنيفاً آخر.' : 'Try generic keywords like: neon, wood, classic, heritage, or select another category.'}</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Render Cards
+    filtered.forEach(style => {
+      const card = document.createElement('div');
+      card.className = 'encyclopedia-card';
+
+      // 5 Color Swatches HTML
+      let swatchesHtml = '';
+      style.colors.forEach(hex => {
+        swatchesHtml += `<div class="mini-swatch" style="background-color: ${hex};" title="HEX: ${hex} (انقر للنسخ)" data-hex="${hex}"></div>`;
+      });
+
+      const formattedNum = String(style.num).padStart(3, '0');
+
+      card.innerHTML = `
+        <div class="card-top-meta">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <span class="card-index-pill">#${formattedNum}</span>
+            <span class="card-cat-tag">${style.catAr}</span>
+          </div>
+          <span class="card-era-tag">${style.era}</span>
+        </div>
+        <div>
+          <h3 class="card-ar-name">${style.nameAr}</h3>
+          <div class="card-en-name">${style.nameEn}</div>
+        </div>
+        <div class="card-swatches-strip">${swatchesHtml}</div>
+        <p class="card-traits-text">${style.traits}</p>
+        <div class="card-font-info">
+          <span>🔤</span>
+          <code>${style.font}</code>
+        </div>
+        <div class="card-actions-row">
+          <button class="card-action-btn apply-btn" data-action="apply">
+            <span>🎨 ${isAr ? 'طبق على كامل الموقع' : 'Apply to Site'}</span>
+          </button>
+          <button class="card-action-btn inspect-btn" data-action="inspect">
+            <span>🔍 ${isAr ? 'فحص التفاصيل' : 'Inspect Spec'}</span>
+          </button>
+        </div>
+      `;
+
+      // Swatch Click to Copy
+      card.querySelectorAll('.mini-swatch').forEach(sw => {
+        sw.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const hex = sw.getAttribute('data-hex');
+          copyText(hex, isAr ? `✓ تم نسخ كود اللون ${hex}` : `✓ Copied HEX ${hex}`);
+        });
+      });
+
+      // Apply to Full Site Button
+      const applyBtn = card.querySelector('[data-action="apply"]');
+      if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+          playClickSfx(780);
+          applyThemeToFullSite(style.id, style);
+        });
+      }
+
+      // Inspect Button
+      const inspectBtn = card.querySelector('[data-action="inspect"]');
+      if (inspectBtn) {
+        inspectBtn.addEventListener('click', () => {
+          playClickSfx(600);
+          openSpecModal(style);
+        });
+      }
+
+      grid.appendChild(card);
+    });
+  }
+
+  // Open Spec Detail Modal
+  function openSpecModal(style) {
+    state.currentModalStyle = style;
+    const modal = document.getElementById('specModalOverlay');
+    if (!modal) return;
+
+    const isAr = state.currentLang === 'ar';
+    const formattedNum = String(style.num).padStart(3, '0');
+
+    document.getElementById('modalNumPill').textContent = `#${formattedNum}`;
+    document.getElementById('modalCatTag').textContent = style.catAr;
+    document.getElementById('modalEraTag').textContent = style.era;
+    document.getElementById('modalTitleAr').textContent = style.nameAr;
+    document.getElementById('modalTitleEn').textContent = style.nameEn;
+    document.getElementById('modalFontCode').textContent = style.font;
+    document.getElementById('modalTraitsText').textContent = style.traits;
+    document.getElementById('modalBestForBox').innerHTML = `<strong>${isAr ? '✓ مثالي لـ:' : '✓ Recommended For:'}</strong> ${style.bestFor}`;
+    document.getElementById('modalCssCode').textContent = style.css;
+
+    // Color stripes at top
+    const stripesContainer = document.getElementById('modalColorStripes');
+    stripesContainer.innerHTML = '';
+    style.colors.forEach(hex => {
+      const stripe = document.createElement('div');
+      stripe.className = 'modal-header-stripe';
+      stripe.style.backgroundColor = hex;
+      stripesContainer.appendChild(stripe);
+    });
+
+    // Swatches with click to copy
+    const swatchesStrip = document.getElementById('modalSwatchesStrip');
+    swatchesStrip.innerHTML = '';
+    style.colors.forEach(hex => {
+      const sw = document.createElement('div');
+      sw.className = 'mini-swatch';
+      sw.style.backgroundColor = hex;
+      sw.title = `HEX: ${hex} (${isAr ? 'انقر للنسخ' : 'Click to copy'})`;
+      sw.onclick = () => copyText(hex, isAr ? `✓ تم نسخ كود اللون ${hex}` : `✓ Copied HEX ${hex}`);
+      swatchesStrip.appendChild(sw);
+    });
+
+    // Modal Apply Button
+    const applyBtn = document.getElementById('modalApplySiteBtn');
+    if (applyBtn) {
+      applyBtn.onclick = () => {
+        applyThemeToFullSite(style.id, style);
+        closeSpecModal();
+      };
+    }
+
+    modal.classList.add('open');
+  }
+
+  function closeSpecModal() {
+    const modal = document.getElementById('specModalOverlay');
+    if (modal) modal.classList.remove('open');
+  }
+
+  // Setup Search Input
+  function setupSearch() {
+    const searchInput = document.getElementById('encyclopediaSearchInput');
+    const clearBtn = document.getElementById('clearSearchBtn');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', (e) => {
+      state.searchQuery = e.target.value;
+      if (clearBtn) clearBtn.style.display = state.searchQuery ? 'inline-block' : 'none';
+      renderEncyclopediaGrid();
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        state.searchQuery = '';
+        clearBtn.style.display = 'none';
+        renderEncyclopediaGrid();
+      });
+    }
+  }
+
+  // Setup Modal Close Handlers
+  function setupModalEvents() {
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const modalOverlay = document.getElementById('specModalOverlay');
+    const copyCssBtn = document.getElementById('modalCopyCssBtn');
+
+    if (closeBtn) closeBtn.addEventListener('click', closeSpecModal);
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeSpecModal();
+      });
+    }
+    if (copyCssBtn) {
+      copyCssBtn.addEventListener('click', () => {
+        const code = document.getElementById('modalCssCode').textContent;
+        const isAr = state.currentLang === 'ar';
+        copyText(code, isAr ? '✓ تم نسخ كود CSS للنمط بنجاح!' : '✓ Archetype CSS copied!');
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSpecModal();
+    });
+  }
+
   // Populate Compare Select Dropdowns
   function setupCompareSelects() {
     const selectA = document.getElementById('selectCompareA');
@@ -476,7 +799,7 @@
     const isAr = state.currentLang === 'ar';
 
     DESIGN_STYLES.forEach(style => {
-      const name = `${style.icon} ${isAr ? style.nameAr : style.nameEn}`;
+      const name = `${style.icon || '🎨'} ${isAr ? style.nameAr : style.nameEn}`;
       const optA = new Option(name, style.id, false, style.id === state.compareThemeAId);
       const optB = new Option(name, style.id, false, style.id === state.compareThemeBId);
       selectA.add(optA);
@@ -506,9 +829,10 @@
       document.body.dir = state.currentLang === 'ar' ? 'rtl' : 'ltr';
       langBtn.textContent = state.currentLang === 'ar' ? 'English' : 'عربي';
 
-      // Update static text elements
       updateStaticUIText();
       setupCompareSelects();
+      renderFilterPills();
+      renderEncyclopediaGrid();
       updateAllViews();
       playClickSfx(660);
     });
@@ -526,16 +850,15 @@
 
   const I18N_DICT = {
     appTitle: { ar: 'استوديو أنماط التصميم البصري', en: 'Archetype UI Studio' },
-    appBadge: { ar: '12 نموذجاً جذرياً', en: '12 Radical Archetypes' },
+    appBadge: { ar: '300 نمط تصميم موثق', en: '300 Documented Archetypes' },
     compareModeBtn: { ar: 'مقارنة نمطين جنباً إلى جنب', en: 'Compare Archetypes' },
-    studioModeBtn: { ar: 'عرض الاستوديو الفردي', en: 'Studio Workbench' },
+    navBrowseAll: { ar: '📚 تصفح الـ 300 نمط', en: '📚 Browse 300 Styles' },
     tabEcommerce: { ar: '🛒 بطاقة متجر فاخرة', en: '🛒 E-Commerce Showcase' },
     tabSaas: { ar: '⚡ لوحة تحكم SaaS', en: '⚡ SaaS Action Console' },
     tabMedia: { ar: '🎵 مشغل وسائط تفاعلي', en: '🎵 Haptic Media Player' },
     labTitle: { ar: 'معمل العناصر الدقيقة (Micro-Components Lab)', en: 'Micro-Components Playground' },
-    inspectorTitleHeader: { ar: 'التشريح الهندسي والفلسفة البصرية', en: 'Architectural Anatomy & Principles' },
-    colorPaletteTitle: { ar: 'لوحة الألوان الأساسية (انقر للنسخ)', en: 'Core Color Palette (Click to Copy)' },
     typographyTitle: { ar: 'التيبوغرافي ونظام الخطوط', en: 'Typography & Geometry System' },
+    colorPaletteTitle: { ar: 'لوحة الألوان الأساسية (انقر للنسخ)', en: 'Core Color Palette (Click to Copy)' },
     cssTokensTitle: { ar: 'أكواد CSS المعتمدة للنمط', en: 'Archetype CSS Token System' },
     copyCssBtn: { ar: 'نسخ CSS', en: 'Copy CSS' }
   };
@@ -622,9 +945,14 @@
     setupAudioToggle();
     setupCopyCss();
     setupCompareSelects();
+    setupSearch();
+    setupModalEvents();
 
-    // Initial render
-    updateAllViews();
+    renderFilterPills();
+    renderEncyclopediaGrid();
+
+    // Initial render with full-site morph
+    applyThemeToFullSite('neo-asiri');
   });
 
 })();
