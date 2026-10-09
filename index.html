@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استوديو أنماط التصميم البصري | Archetype UI Studio</title>
+  <meta name="description" content="استوديو تفاعلي يستعرض 12 نمطاً وتوجهاً جذرياً في تصميم واجهات المستخدم والويب مع محاكاة حية وتشريح هندسي">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body dir="rtl">
+
+  <!-- TOP NAVIGATION -->
+  <header class="studio-nav">
+    <div class="nav-brand">
+      <div class="brand-icon">🏛️</div>
+      <div class="brand-text">
+        <h1 data-i18n="appTitle">استوديو أنماط التصميم البصري</h1>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 2px;">
+          <span class="brand-badge" data-i18n="appBadge">12 نموذجاً جذرياً</span>
+          <span style="font-size: 0.72rem; color: #94A3B8;">أ. طارق ابوعشي</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <button class="nav-btn" id="sfxToggleBtn" title="تفعيل / كتم المؤثرات الصوتية">🔊 SFX</button>
+      <button class="nav-btn" id="compareModeBtn" data-i18n="compareModeBtn">مقارنة نمطين جنباً إلى جنب</button>
+      <button class="nav-btn" id="langToggleBtn">English</button>
+      <a href="https://github.com/Tareq0001/UI-Design-Styles-Showcase" target="_blank" rel="noopener noreferrer" class="github-link" title="مستودع GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- STYLE SELECTOR CAROUSEL -->
+  <section class="selector-bar-wrapper">
+    <div class="selector-track" id="selectorTrack">
+      <!-- Generated dynamically by app.js -->
+    </div>
+  </section>
+
+  <!-- MAIN STUDIO WORKBENCH (DEFAULT VIEW) -->
+  <main class="workbench-container" id="studioWorkbench">
+    
+    <!-- LEFT: STAGE COLUMN -->
+    <div class="stage-column">
+      
+      <!-- Scenario Selector Tabs -->
+      <div class="scenario-bar">
+        <div class="scenario-tabs">
+          <button class="scenario-tab active" data-scenario="ecommerce" data-i18n="tabEcommerce">🛒 بطاقة متجر فاخرة</button>
+          <button class="scenario-tab" data-scenario="saas" data-i18n="tabSaas">⚡ لوحة تحكم SaaS</button>
+          <button class="scenario-tab" data-scenario="media" data-i18n="tabMedia">🎵 مشغل وسائط تفاعلي</button>
+        </div>
+        <div class="canvas-viewport-info">
+          <span>● محاكاة فيزيائية حية</span>
+        </div>
+      </div>
+
+      <!-- Live Interactive Stage Canvas -->
+      <div class="stage-canvas" id="stageCanvas">
+        <!-- Rendered dynamically matching active archetype -->
+      </div>
+
+      <!-- Micro-Components Lab -->
+      <section class="components-lab" id="componentsLab">
+        <div class="lab-title" data-i18n="labTitle">معمل العناصر الدقيقة (Micro-Components Lab)</div>
+        <div class="lab-grid">
+          <div class="lab-item">
+            <span class="lab-item-label">استجابة الأزرار المباشرة:</span>
+            <button class="btn-primary" id="labPrimaryBtn">زر إجراء حي</button>
+          </div>
+          <div class="lab-item">
+            <span class="lab-item-label">حقل إدخال وبحث متكيف:</span>
+            <input type="text" class="input-control" id="labInput" placeholder="اكتب للبحث والتجربة...">
+          </div>
+          <div class="lab-item">
+            <span class="lab-item-label">محدد النسبة التفاعلي (<span id="labRangeVal">68</span>%):</span>
+            <input type="range" min="0" max="100" value="68" id="labRange" style="width: 100%; accent-color: var(--theme-accent);">
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT: ARCHITECTURAL INSPECTOR -->
+    <aside class="inspector-panel">
+      
+      <div class="inspector-card">
+        <div class="inspector-header">
+          <h3 id="inspectorTitle">🏔️ النمط العسيري المعماري</h3>
+          <span class="archetype-meta-badge" id="inspectorBadge">تراث معماري أصيل</span>
+        </div>
+        <p class="archetype-summary-text" id="inspectorSummary"></p>
+
+        <!-- Guidelines & Rules -->
+        <div id="bestForBox" class="rules-box"></div>
+        <div id="avoidBox" class="avoid-box"></div>
+
+        <!-- Typography Breakdown -->
+        <div>
+          <h4 style="font-size: 0.88rem; color: var(--studio-muted); margin-bottom: 0.5rem;" data-i18n="typographyTitle">التيبوغرافي ونظام الخطوط</h4>
+          <div id="typoDetails"></div>
+        </div>
+
+        <!-- Color Palette Swatches -->
+        <div>
+          <h4 style="font-size: 0.88rem; color: var(--studio-muted); margin-bottom: 0.5rem;" data-i18n="colorPaletteTitle">لوحة الألوان الأساسية (انقر للنسخ)</h4>
+          <div class="swatches-grid" id="swatchesGrid"></div>
+        </div>
+
+        <!-- Core CSS Snippet -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+            <h4 style="font-size: 0.88rem; color: var(--studio-muted);" data-i18n="cssTokensTitle">أكواد CSS المعتمدة للنمط</h4>
+          </div>
+          <div class="code-snippet-box">
+            <button class="copy-btn" id="copyCssBtn" data-i18n="copyCssBtn">نسخ CSS</button>
+            <code id="cssSnippetCode"></code>
+          </div>
+        </div>
+
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- SPLIT COMPARE MODE (SIDE-BY-SIDE) -->
+  <section class="compare-container" id="compareContainer">
+    
+    <!-- LEFT PANEL A -->
+    <div class="compare-card">
+      <div class="compare-header">
+        <span style="font-weight: 800; font-size: 0.95rem;">النمط الأول (A):</span>
+        <select class="compare-select" id="selectCompareA"></select>
+      </div>
+      <div class="stage-canvas" id="compareStageA" style="min-height: 520px;"></div>
+    </div>
+
+    <!-- RIGHT PANEL B -->
+    <div class="compare-card">
+      <div class="compare-header">
+        <span style="font-weight: 800; font-size: 0.95rem;">النمط الثاني (B):</span>
+        <select class="compare-select" id="selectCompareB"></select>
+      </div>
+      <div class="stage-canvas" id="compareStageB" style="min-height: 520px;"></div>
+    </div>
+
+  </section>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notice" id="toastNotice"></div>
+
+  <!-- STUDIO FOOTER -->
+  <footer class="studio-footer">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+      <div><strong>استوديو أنماط التصميم البصري (Archetype UI Studio)</strong> — تطوير وهندسة <strong>أ. طارق ابوعشي</strong></div>
+      <div style="opacity: 0.75; font-size: 0.78rem;">منصة مفتوحة المصدر تستعرض 12 فلسفة بصرية جذرية لواجهات الويب الحديثة والكلاسيكية</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/data.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

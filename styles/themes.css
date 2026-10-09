@@ -1,0 +1,971 @@
+/* UI Design Styles Showcase - Themes Engine
+   Master CSS transformations for all 12 distinct archetypes */
+
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Cinzel:wght@600;800&family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@500;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@500;700&family=VT323&display=swap');
+
+/* ==========================================================================
+   1. NEO-ASIRI GEOMETRIC HERITAGE (النمط العسيري المعماري)
+   ========================================================================== */
+.theme-neo-asiri {
+  --theme-bg: #221711;
+  --theme-surface: #36261E;
+  --theme-surface-alt: #463329;
+  --theme-border: #6B5243;
+  --theme-text: #FDFDF8;
+  --theme-text-muted: #D1C4B9;
+  --theme-accent: #D62828;
+  --theme-accent-hover: #B71C1C;
+  --theme-font-heading: 'Amiri', 'Cairo', serif;
+  --theme-font-body: 'Cairo', 'Alexandria', sans-serif;
+  --theme-radius: 4px;
+  --theme-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.theme-neo-asiri .stage-canvas {
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(214, 40, 40, 0.15) 0%, transparent 60%),
+    linear-gradient(180deg, #2A1C14 0%, #1A110D 100%);
+  color: var(--theme-text);
+  border: 3px solid #5A4234;
+  position: relative;
+}
+
+/* Crenellated Asiri White Ghus Plaster Frieze on top */
+.theme-neo-asiri .stage-canvas::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 14px;
+  background: 
+    radial-gradient(circle at 10px 0, transparent 8px, #FDFDF8 9px),
+    linear-gradient(90deg, #D62828 0%, #F59E0B 33%, #16A34A 66%, #1D4ED8 100%);
+  background-size: 20px 14px, 100% 4px;
+  background-repeat: repeat-x, no-repeat;
+  background-position: top center, bottom center;
+  z-index: 5;
+}
+
+.theme-neo-asiri .archetype-card {
+  background: var(--theme-surface);
+  border: 2px solid var(--theme-border);
+  border-top: 6px solid #D62828;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+/* Qatt geometric chevron ribbon */
+.theme-neo-asiri .qatt-ribbon {
+  height: 8px;
+  background: repeating-linear-gradient(
+    45deg,
+    #D62828,
+    #D62828 10px,
+    #F59E0B 10px,
+    #F59E0B 20px,
+    #16A34A 20px,
+    #16A34A 30px,
+    #1D4ED8 30px,
+    #1D4ED8 40px
+  );
+  margin-bottom: 1.25rem;
+  border-radius: 2px;
+}
+
+.theme-neo-asiri .btn-primary {
+  background: linear-gradient(180deg, #D62828 0%, #9E1A1A 100%);
+  color: #FFF;
+  border: 1px solid #FF8080;
+  box-shadow: 0 4px 12px rgba(214, 40, 40, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  font-family: var(--theme-font-body);
+  font-weight: 700;
+  border-radius: 4px;
+}
+.theme-neo-asiri .btn-primary:hover {
+  background: linear-gradient(180deg, #E63939 0%, #B71C1C 100%);
+  transform: translateY(-1px);
+}
+
+.theme-neo-asiri .tag-badge {
+  background: #FDFDF8;
+  color: #2C1E16;
+  font-weight: 800;
+  border-radius: 2px;
+  border: 1px solid #D62828;
+  letter-spacing: 0.5px;
+}
+
+.theme-neo-asiri .input-control {
+  background: #231812;
+  border: 1.5px solid #6B5243;
+  color: #FDFDF8;
+  border-radius: 4px;
+}
+.theme-neo-asiri .input-control:focus {
+  border-color: #F59E0B;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+
+/* ==========================================================================
+   2. SWISS INTERNATIONAL TYPOGRAPHIC STYLE (النمط السويسري الصارم)
+   ========================================================================== */
+.theme-swiss-international {
+  --theme-bg: #FFFFFF;
+  --theme-surface: #FFFFFF;
+  --theme-surface-alt: #F4F4F4;
+  --theme-border: #0A0A0A;
+  --theme-text: #0A0A0A;
+  --theme-text-muted: #555555;
+  --theme-accent: #FF3B00;
+  --theme-accent-hover: #0A0A0A;
+  --theme-font-heading: 'Inter', 'Alexandria', sans-serif;
+  --theme-font-body: 'Inter', 'Alexandria', sans-serif;
+  --theme-radius: 0px;
+  --theme-shadow: none;
+}
+
+.theme-swiss-international .stage-canvas {
+  background: #FFFFFF;
+  color: #0A0A0A;
+  border: 2px solid #0A0A0A;
+  /* 1px column grid background */
+  background-image: 
+    linear-gradient(to right, rgba(10, 10, 10, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 10, 10, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.theme-swiss-international .archetype-card {
+  background: #FFFFFF;
+  border: 2px solid #0A0A0A;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 2rem;
+}
+
+.theme-swiss-international h2,
+.theme-swiss-international h3 {
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+.theme-swiss-international .btn-primary {
+  background: #0A0A0A;
+  color: #FFFFFF;
+  border: 2px solid #0A0A0A;
+  border-radius: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.theme-swiss-international .btn-primary:hover {
+  background: #FF3B00;
+  border-color: #FF3B00;
+  color: #FFFFFF;
+}
+
+.theme-swiss-international .tag-badge {
+  background: #0A0A0A;
+  color: #FFFFFF;
+  border-radius: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+}
+
+.theme-swiss-international .input-control {
+  background: #FFFFFF;
+  border: 2px solid #0A0A0A;
+  border-radius: 0;
+  color: #0A0A0A;
+  font-weight: 600;
+}
+.theme-swiss-international .input-control:focus {
+  border-color: #FF3B00;
+  outline: none;
+}
+
+
+/* ==========================================================================
+   3. TACTILE NEO-BRUTALISM (النيو-بروتاليزم الحسي والمرح)
+   ========================================================================== */
+.theme-neo-brutalism {
+  --theme-bg: #FFFDF0;
+  --theme-surface: #FFE600;
+  --theme-surface-alt: #FFFFFF;
+  --theme-border: #000000;
+  --theme-text: #000000;
+  --theme-text-muted: #333333;
+  --theme-accent: #FF5E94;
+  --theme-accent-hover: #00E5FF;
+  --theme-font-heading: 'Space Grotesk', 'Cairo', sans-serif;
+  --theme-font-body: 'Space Grotesk', 'Cairo', sans-serif;
+  --theme-radius: 6px;
+  --theme-shadow: 6px 6px 0px #000000;
+}
+
+.theme-neo-brutalism .stage-canvas {
+  background: #FFFCE8;
+  color: #000000;
+  border: 3.5px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  background-image: radial-gradient(#000000 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.theme-neo-brutalism .archetype-card {
+  background: #FFFFFF;
+  border: 3.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 6px;
+  transform: rotate(-0.5deg);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.theme-neo-brutalism .archetype-card:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #000000;
+}
+
+.theme-neo-brutalism .btn-primary {
+  background: #FF5E94;
+  color: #000000;
+  border: 3.5px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  transform: translate(0, 0);
+  transition: all 0.1s ease;
+}
+.theme-neo-brutalism .btn-primary:hover {
+  background: #00E5FF;
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px #000000;
+}
+.theme-neo-brutalism .btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.theme-neo-brutalism .tag-badge {
+  background: #FFE600;
+  color: #000000;
+  border: 2.5px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  font-weight: 900;
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.theme-neo-brutalism .input-control {
+  background: #FFFFFF;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  color: #000000;
+  font-weight: 700;
+  border-radius: 4px;
+}
+.theme-neo-brutalism .input-control:focus {
+  background: #FFFBEA;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #000000;
+  outline: none;
+}
+
+
+/* ==========================================================================
+   4. CYBERPUNK TACTICAL HUD (السايبربانك وشاشات HUD التكتيكية)
+   ========================================================================== */
+.theme-cyberpunk-hud {
+  --theme-bg: #060913;
+  --theme-surface: rgba(8, 16, 32, 0.9);
+  --theme-surface-alt: #0F1A2E;
+  --theme-border: #00F0FF;
+  --theme-text: #E0F7FF;
+  --theme-text-muted: #648BA6;
+  --theme-accent: #00F0FF;
+  --theme-accent-hover: #00FF66;
+  --theme-font-heading: 'Orbitron', 'JetBrains Mono', monospace;
+  --theme-font-body: 'JetBrains Mono', 'Cairo', monospace;
+  --theme-radius: 0px;
+  --theme-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+}
+
+.theme-cyberpunk-hud .stage-canvas {
+  background: #060913;
+  color: #E0F7FF;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  /* CRT scanlines effect */
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Moving CRT scanlines overlay */
+.theme-cyberpunk-hud .stage-canvas::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 20;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.theme-cyberpunk-hud .archetype-card {
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  clip-path: polygon(0 14px, 14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px));
+  box-shadow: inset 0 0 25px rgba(0, 240, 255, 0.12), 0 0 15px rgba(0, 240, 255, 0.25);
+  position: relative;
+}
+
+.theme-cyberpunk-hud .btn-primary {
+  background: rgba(0, 240, 255, 0.12);
+  color: #00F0FF;
+  border: 1px solid #00F0FF;
+  clip-path: polygon(0 8px, 8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+.theme-cyberpunk-hud .btn-primary:hover {
+  background: #00F0FF;
+  color: #060913;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.8);
+}
+
+.theme-cyberpunk-hud .tag-badge {
+  background: rgba(255, 183, 3, 0.15);
+  color: #FFB703;
+  border: 1px solid #FFB703;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  border-radius: 0;
+  letter-spacing: 1.5px;
+}
+
+.theme-cyberpunk-hud .input-control {
+  background: rgba(6, 12, 24, 0.9);
+  border: 1px solid #648BA6;
+  color: #00F0FF;
+  font-family: 'JetBrains Mono', monospace;
+  border-radius: 0;
+}
+.theme-cyberpunk-hud .input-control:focus {
+  border-color: #00F0FF;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+}
+
+
+/* ==========================================================================
+   5. NORDIC SERENE / WARM MINIMAL (النمط النوردي الهادئ)
+   ========================================================================== */
+.theme-nordic-serene {
+  --theme-bg: #F7F5F0;
+  --theme-surface: #FFFFFF;
+  --theme-surface-alt: #F1ECE4;
+  --theme-border: rgba(43, 45, 47, 0.06);
+  --theme-text: #2B2D2F;
+  --theme-text-muted: #787A7C;
+  --theme-accent: #6B7F70;
+  --theme-accent-hover: #55675A;
+  --theme-font-heading: 'Plus Jakarta Sans', 'Alexandria', sans-serif;
+  --theme-font-body: 'Plus Jakarta Sans', 'Alexandria', sans-serif;
+  --theme-radius: 28px;
+  --theme-shadow: 0 20px 40px -15px rgba(60, 50, 40, 0.07);
+}
+
+.theme-nordic-serene .stage-canvas {
+  background: #F7F5F0;
+  color: #2B2D2F;
+  border: 1px solid rgba(43, 45, 47, 0.05);
+}
+
+.theme-nordic-serene .archetype-card {
+  background: #FFFFFF;
+  border-radius: var(--theme-radius);
+  border: 1px solid rgba(43, 45, 47, 0.04);
+  box-shadow: var(--theme-shadow);
+  padding: 2.5rem;
+}
+
+.theme-nordic-serene .btn-primary {
+  background: #6B7F70;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  box-shadow: 0 8px 20px -6px rgba(107, 127, 112, 0.4);
+}
+.theme-nordic-serene .btn-primary:hover {
+  background: #55675A;
+  transform: translateY(-1px);
+}
+
+.theme-nordic-serene .tag-badge {
+  background: #EAE6DE;
+  color: #55675A;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 6px 14px;
+}
+
+.theme-nordic-serene .input-control {
+  background: #F2EFE9;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #2B2D2F;
+  padding: 0.75rem 1.25rem;
+}
+.theme-nordic-serene .input-control:focus {
+  background: #FFFFFF;
+  border-color: #6B7F70;
+  box-shadow: 0 0 0 3px rgba(107, 127, 112, 0.15);
+}
+
+
+/* ==========================================================================
+   6. LIQUID GLASS & AURORA MESH (الزجاج السائل وأورورا)
+   ========================================================================== */
+.theme-liquid-glass-aurora {
+  --theme-bg: #0B0C1E;
+  --theme-surface: rgba(255, 255, 255, 0.08);
+  --theme-surface-alt: rgba(255, 255, 255, 0.04);
+  --theme-border: rgba(255, 255, 255, 0.18);
+  --theme-text: #FFFFFF;
+  --theme-text-muted: rgba(255, 255, 255, 0.7);
+  --theme-accent: #8B5CF6;
+  --theme-accent-hover: #06B6D4;
+  --theme-font-heading: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  --theme-font-body: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  --theme-radius: 20px;
+  --theme-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+.theme-liquid-glass-aurora .stage-canvas {
+  background: #0B0C1E;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Animated Aurora Blobs behind glass */
+.theme-liquid-glass-aurora .stage-canvas::before {
+  content: '';
+  position: absolute;
+  top: -10%; left: -10%;
+  width: 120%; height: 120%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.3) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.25) 0%, transparent 50%);
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+  animation: auroraPulse 12s ease-in-out infinite alternate;
+}
+
+@keyframes auroraPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(4deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.theme-liquid-glass-aurora .archetype-card {
+  position: relative;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--theme-radius);
+  box-shadow: var(--theme-shadow);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
+.theme-liquid-glass-aurora .btn-primary {
+  background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px -4px rgba(139, 92, 246, 0.5);
+  transition: all 0.2s ease;
+}
+.theme-liquid-glass-aurora .btn-primary:hover {
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.6);
+  transform: translateY(-2px);
+}
+
+.theme-liquid-glass-aurora .tag-badge {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+.theme-liquid-glass-aurora .input-control {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border-radius: 12px;
+}
+.theme-liquid-glass-aurora .input-control:focus {
+  border-color: #8B5CF6;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+
+/* ==========================================================================
+   7. CLASSIC AQUA SKEUOMORPHISM (الريترو التجسيدي الكلاسيكي)
+   ========================================================================== */
+.theme-skeuomorphism-classic {
+  --theme-bg: #D8DFE8;
+  --theme-surface: #E8EDF2;
+  --theme-surface-alt: #CAD3DF;
+  --theme-border: #9AA7B6;
+  --theme-text: #1E293B;
+  --theme-text-muted: #52637A;
+  --theme-accent: #0099DD;
+  --theme-accent-hover: #0077B5;
+  --theme-font-heading: 'Lucida Grande', 'Cairo', sans-serif;
+  --theme-font-body: 'Lucida Grande', 'Cairo', sans-serif;
+  --theme-radius: 10px;
+  --theme-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.theme-skeuomorphism-classic .stage-canvas {
+  background: linear-gradient(180deg, #DCE3EC 0%, #CAD4E1 100%);
+  color: var(--theme-text);
+  border: 2px solid #8998AB;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.theme-skeuomorphism-classic .archetype-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E8EEF5 100%);
+  border: 1px solid #9BAAB9;
+  border-radius: var(--theme-radius);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Iconic Aqua Gel Glossy Pill Button */
+.theme-skeuomorphism-classic .btn-primary {
+  background: linear-gradient(to bottom, #4CB8F5 0%, #0099DD 50%, #0077B5 51%, #006096 100%);
+  border: 1px solid #004B76;
+  border-radius: 999px;
+  color: #FFFFFF;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 3px 6px rgba(0, 0, 0, 0.28);
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+}
+.theme-skeuomorphism-classic .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 1px; left: 8%; right: 8%; height: 45%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.15) 100%);
+  border-radius: 999px;
+  pointer-events: none;
+}
+.theme-skeuomorphism-classic .btn-primary:active {
+  background: linear-gradient(to bottom, #005080 0%, #0077B5 50%, #0099DD 100%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  transform: translateY(1px);
+}
+
+.theme-skeuomorphism-classic .tag-badge {
+  background: linear-gradient(180deg, #E6EBF2 0%, #BCC8D6 100%);
+  border: 1px solid #8D9DAF;
+  border-radius: 6px;
+  color: #243345;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.theme-skeuomorphism-classic .input-control {
+  background: #FFFFFF;
+  border: 1px solid #8998AB;
+  border-radius: 6px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #1E293B;
+}
+
+
+/* ==========================================================================
+   8. Y2K CYBER CHROME & GEL (جماليات Y2K والكروم المعدني)
+   ========================================================================== */
+.theme-y2k-cyber-chrome {
+  --theme-bg: #0C0D14;
+  --theme-surface: #161824;
+  --theme-surface-alt: #202436;
+  --theme-border: #DDE2EB;
+  --theme-text: #FFFFFF;
+  --theme-text-muted: #9BA5B5;
+  --theme-accent: #E2E8F0;
+  --theme-accent-hover: #F43F5E;
+  --theme-font-heading: 'Orbitron', 'Space Grotesk', sans-serif;
+  --theme-font-body: 'Space Grotesk', 'Cairo', sans-serif;
+  --theme-radius: 50px;
+  --theme-shadow: 0 0 25px rgba(168, 85, 247, 0.35);
+}
+
+.theme-y2k-cyber-chrome .stage-canvas {
+  background: #0C0D14;
+  color: #FFFFFF;
+  border: 2px solid rgba(226, 232, 240, 0.4);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(244, 63, 94, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.2) 0%, transparent 40%);
+}
+
+.theme-y2k-cyber-chrome .archetype-card {
+  background: #161824;
+  border: 2px solid #FFFFFF;
+  border-radius: 32px;
+  box-shadow: 
+    0 0 20px rgba(168, 85, 247, 0.4),
+    inset 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+/* Molten Liquid Chrome metallic button */
+.theme-y2k-cyber-chrome .btn-primary {
+  background: linear-gradient(135deg, #F8FAFC 0%, #CBD5E1 25%, #FFFFFF 50%, #94A3B8 75%, #E2E8F0 100%);
+  border: 2px solid #FFFFFF;
+  color: #0F172A;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+.theme-y2k-cyber-chrome .btn-primary:hover {
+  background: linear-gradient(135deg, #F43F5E 0%, #A855F7 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.8);
+}
+
+.theme-y2k-cyber-chrome .tag-badge {
+  background: linear-gradient(90deg, #A855F7 0%, #38BDF8 100%);
+  color: #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.theme-y2k-cyber-chrome .input-control {
+  background: #11131C;
+  border: 1.5px solid #64748B;
+  color: #FFFFFF;
+  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+}
+.theme-y2k-cyber-chrome .input-control:focus {
+  border-color: #38BDF8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+
+/* ==========================================================================
+   9. EDITORIAL LUXURY / HIGH-FASHION SERIF (التحريري الصحفي الفاخر)
+   ========================================================================== */
+.theme-editorial-luxury {
+  --theme-bg: #F9F7F2;
+  --theme-surface: #F9F7F2;
+  --theme-surface-alt: #F1ECE1;
+  --theme-border: #141414;
+  --theme-text: #141414;
+  --theme-text-muted: #7A7571;
+  --theme-accent: #A38148;
+  --theme-accent-hover: #141414;
+  --theme-font-heading: 'Playfair Display', 'Amiri', serif;
+  --theme-font-body: 'Amiri', 'Playfair Display', serif;
+  --theme-radius: 0px;
+  --theme-shadow: none;
+}
+
+.theme-editorial-luxury .stage-canvas {
+  background: #F9F7F2;
+  color: #141414;
+  border: 1px solid #D6D1C7;
+  padding: 3rem;
+}
+
+.theme-editorial-luxury .archetype-card {
+  background: #F9F7F2;
+  border: 1px solid #141414;
+  border-radius: 0;
+  padding: 2.5rem;
+  box-shadow: none;
+}
+
+.theme-editorial-luxury h2,
+.theme-editorial-luxury h3 {
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  border-bottom: 1px solid #D6D1C7;
+  padding-bottom: 1rem;
+}
+
+.theme-editorial-luxury .btn-primary {
+  background: #141414;
+  color: #F9F7F2;
+  border: 1px solid #141414;
+  border-radius: 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+.theme-editorial-luxury .btn-primary:hover {
+  background: #A38148;
+  border-color: #A38148;
+}
+
+.theme-editorial-luxury .tag-badge {
+  background: transparent;
+  color: #A38148;
+  border: 1px solid #A38148;
+  border-radius: 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.theme-editorial-luxury .input-control {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #141414;
+  border-radius: 0;
+  color: #141414;
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+}
+.theme-editorial-luxury .input-control:focus {
+  border-bottom: 2px solid #A38148;
+  outline: none;
+}
+
+
+/* ==========================================================================
+   10. NEUMORPHISM / SOFT EXTRUDED CLAY (النيومورفيزم الطيني المنحوت)
+   ========================================================================== */
+.theme-neumorphism-soft {
+  --theme-bg: #E0E5EC;
+  --theme-surface: #E0E5EC;
+  --theme-surface-alt: #D8DFE8;
+  --theme-border: transparent;
+  --theme-text: #4A5568;
+  --theme-text-muted: #718096;
+  --theme-accent: #4D7CFE;
+  --theme-accent-hover: #3562E0;
+  --theme-font-heading: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  --theme-font-body: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  --theme-radius: 24px;
+  --theme-shadow: 10px 10px 20px #B8BFC9, -10px -10px 20px #FFFFFF;
+}
+
+.theme-neumorphism-soft .stage-canvas {
+  background: #E0E5EC;
+  color: #4A5568;
+  border: none;
+}
+
+.theme-neumorphism-soft .archetype-card {
+  background: #E0E5EC;
+  border-radius: var(--theme-radius);
+  border: none;
+  box-shadow: 10px 10px 20px #B8BFC9, -10px -10px 20px #FFFFFF;
+}
+
+.theme-neumorphism-soft .btn-primary {
+  background: #E0E5EC;
+  color: #4D7CFE;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 6px 6px 12px #B8BFC9, -6px -6px 12px #FFFFFF;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+.theme-neumorphism-soft .btn-primary:hover {
+  color: #3562E0;
+  transform: translateY(-1px);
+}
+.theme-neumorphism-soft .btn-primary:active {
+  box-shadow: inset 4px 4px 8px #B8BFC9, inset -4px -4px 8px #FFFFFF;
+  transform: translateY(0);
+}
+
+.theme-neumorphism-soft .tag-badge {
+  background: #E0E5EC;
+  box-shadow: 3px 3px 6px #B8BFC9, -3px -3px 6px #FFFFFF;
+  color: #4D7CFE;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.theme-neumorphism-soft .input-control {
+  background: #E0E5EC;
+  border: none;
+  box-shadow: inset 4px 4px 8px #B8BFC9, inset -4px -4px 8px #FFFFFF;
+  border-radius: 14px;
+  color: #4A5568;
+}
+.theme-neumorphism-soft .input-control:focus {
+  outline: none;
+  box-shadow: inset 6px 6px 10px #B8BFC9, inset -6px -6px 10px #FFFFFF;
+}
+
+
+/* ==========================================================================
+   11. 80S MONOCHROME CRT TERMINAL (الريترو تيرمينال وشاشات CRT)
+   ========================================================================== */
+.theme-retro-terminal-80s {
+  --theme-bg: #070C08;
+  --theme-surface: #0E1A10;
+  --theme-surface-alt: #142818;
+  --theme-border: #33FF33;
+  --theme-text: #33FF33;
+  --theme-text-muted: #1E821E;
+  --theme-accent: #33FF33;
+  --theme-accent-hover: #66FF66;
+  --theme-font-heading: 'VT323', 'JetBrains Mono', monospace;
+  --theme-font-body: 'VT323', 'JetBrains Mono', monospace;
+  --theme-radius: 0px;
+  --theme-shadow: 0 0 15px rgba(51, 255, 51, 0.4);
+}
+
+.theme-retro-terminal-80s .stage-canvas {
+  background: #070C08;
+  color: #33FF33;
+  border: 3px solid #33FF33;
+  box-shadow: inset 0 0 30px rgba(51, 255, 51, 0.25), 0 0 20px rgba(51, 255, 51, 0.4);
+  position: relative;
+  font-size: 1.25rem;
+}
+
+.theme-retro-terminal-80s .archetype-card {
+  background: #09120A;
+  border: 2px solid #33FF33;
+  border-radius: 0;
+  box-shadow: 0 0 12px rgba(51, 255, 51, 0.3);
+}
+
+.theme-retro-terminal-80s .btn-primary {
+  background: #33FF33;
+  color: #070C08;
+  border: 2px solid #33FF33;
+  border-radius: 0;
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+.theme-retro-terminal-80s .btn-primary:hover {
+  background: transparent;
+  color: #33FF33;
+  box-shadow: 0 0 15px #33FF33;
+}
+
+.theme-retro-terminal-80s .tag-badge {
+  background: transparent;
+  color: #33FF33;
+  border: 1px dashed #33FF33;
+  border-radius: 0;
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+}
+
+.theme-retro-terminal-80s .input-control {
+  background: #050805;
+  border: 1px solid #33FF33;
+  border-radius: 0;
+  color: #33FF33;
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+}
+
+
+/* ==========================================================================
+   12. BIOPHILIC ORGANIC NATURE-TECH (البيوفيلي الطبيعي والتقنية العضوية)
+   ========================================================================== */
+.theme-biophilic-organic {
+  --theme-bg: #F2EFE9;
+  --theme-surface: #FFFFFF;
+  --theme-surface-alt: #E3DDD2;
+  --theme-border: rgba(78, 135, 82, 0.2);
+  --theme-text: #1C3829;
+  --theme-text-muted: #5E7A69;
+  --theme-accent: #4E8752;
+  --theme-accent-hover: #396B3C;
+  --theme-font-heading: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  --theme-font-body: 'Plus Jakarta Sans', 'Cairo', sans-serif;
+  --theme-radius: 36px 14px 32px 18px;
+  --theme-shadow: 0 18px 36px -12px rgba(28, 56, 41, 0.09);
+}
+
+.theme-biophilic-organic .stage-canvas {
+  background: #F2EFE9;
+  color: #1C3829;
+  border: 2px solid rgba(78, 135, 82, 0.15);
+}
+
+.theme-biophilic-organic .archetype-card {
+  background: #FFFFFF;
+  border-radius: var(--theme-radius);
+  border: 1.5px solid rgba(78, 135, 82, 0.15);
+  box-shadow: var(--theme-shadow);
+  position: relative;
+}
+
+.theme-biophilic-organic .btn-primary {
+  background: linear-gradient(135deg, #4E8752 0%, #2A5A35 100%);
+  color: #FFFFFF;
+  border-radius: 30px 10px 25px 8px;
+  border: none;
+  font-weight: 700;
+  box-shadow: 0 8px 20px -4px rgba(78, 135, 82, 0.4);
+}
+.theme-biophilic-organic .btn-primary:hover {
+  background: linear-gradient(135deg, #5B9B5F 0%, #346C3E 100%);
+  transform: translateY(-2px);
+}
+
+.theme-biophilic-organic .tag-badge {
+  background: #EAF2E9;
+  color: #2A5A35;
+  border: 1px solid rgba(78, 135, 82, 0.25);
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+.theme-biophilic-organic .input-control {
+  background: #F8F6F2;
+  border: 1.5px solid rgba(78, 135, 82, 0.2);
+  border-radius: 24px;
+  color: #1C3829;
+  padding: 0.75rem 1.25rem;
+}
+.theme-biophilic-organic .input-control:focus {
+  border-color: #4E8752;
+  box-shadow: 0 0 0 3px rgba(78, 135, 82, 0.15);
+}
