@@ -1694,3 +1694,227 @@ body.has-hud {
   padding: 4rem 3.5rem;
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
+
+/* =========================================================================
+   NEW DISTINCT ARCHITECTURAL PARADIGM STYLES
+   ========================================================================= */
+
+/* 1. MARINE & CORAL REEF AQUATIC SANCTUARY */
+.marine-ocean-layout {
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 20%, #0F324C 0%, #081B2B 60%, #040E17 100%) !important;
+  color: #E2F5F8 !important;
+  font-family: 'Cairo', 'Inter', sans-serif !important;
+  padding: 3rem 2rem 6rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.marine-wave-divider {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.85;
+}
+
+.marine-glass-hero {
+  max-width: 1150px;
+  margin: 0 auto;
+  background: rgba(13, 43, 67, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(80, 227, 194, 0.35);
+  border-radius: 32px;
+  padding: 4rem 3.5rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+
+.marine-species-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(80, 227, 194, 0.15);
+  border: 1px solid rgba(80, 227, 194, 0.4);
+  color: #50E3C2;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+/* 2. HAUTE LUXURY & QUIET LUXURY ATELIER */
+.haute-luxury-layout {
+  min-height: 100vh;
+  background: #0B0B0D !important;
+  color: #EDE8DE !important;
+  font-family: 'Playfair Display', 'Amiri', serif !important;
+  padding: 4rem 2rem 7rem;
+  position: relative;
+}
+
+.luxury-salon-box {
+  max-width: 1050px;
+  margin: 0 auto;
+  background: #121216;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 5rem 4rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+}
+
+.luxury-monogram-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  color: #D4AF37;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/* 3. SCIENTIFIC TELEMETRY & MISSION CONTROL */
+.scientific-telemetry-layout {
+  min-height: 100vh;
+  background: #060A12 !important;
+  color: #64D2FF !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  padding: 3rem 2rem 6rem;
+}
+
+.telemetry-console-box {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #0B1320;
+  border: 1px solid #1C3352;
+  box-shadow: 0 0 40px rgba(10, 40, 80, 0.4);
+  padding: 3rem;
+  position: relative;
+}
+
+/* 4. CLASSICAL FINE ART SALON */
+.classical-fine-art-layout {
+  min-height: 100vh;
+  background: #F4EFE6 !important;
+  color: #2D251E !important;
+  font-family: 'Amiri', 'Playfair Display', serif !important;
+  padding: 4rem 2rem 7rem;
+}
+
+.fine-art-placard-card {
+  max-width: 1050px;
+  margin: 0 auto;
+  background: #FFFDF9;
+  border: 2px solid #D8CBB7;
+  box-shadow: 0 20px 60px rgba(70, 50, 30, 0.12);
+  padding: 4.5rem 4rem;
+  position: relative;
+}
+
+/* 5. DADA & SURREALIST COLLAGE */
+.dada-surrealist-layout {
+  min-height: 100vh;
+  background: #E8E3D7 !important;
+  color: #1A1A1A !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  padding: 3rem 2rem 6rem;
+  background-image: repeating-linear-gradient(45deg, #DFD9CC 0, #DFD9CC 1px, transparent 0, transparent 50%) !important;
+  background-size: 16px 16px !important;
+}
+
+.dada-collage-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border: 3px solid #111;
+  transform: rotate(-0.75deg);
+  box-shadow: 12px 14px 0px #111;
+  padding: 3.5rem;
+  position: relative;
+}
+
+/* 6. TACTILE PHYSICAL SKEUOMORPHISM */
+.tactile-skeuomorph-layout {
+  min-height: 100vh;
+  background: #2E3339 !important;
+  color: #F0F2F5 !important;
+  font-family: 'Helvetica Neue', 'Cairo', sans-serif !important;
+  padding: 3rem 2rem 6rem;
+}
+
+.skeuo-linen-plate {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #3E464E 0%, #30373E 100%);
+  border: 2px solid #23272C;
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 20px 50px rgba(0,0,0,0.6);
+  padding: 4rem 3.5rem;
+  position: relative;
+}
+
+/* 7. MODERN GLASSMORPHISM & SPATIAL */
+.glassmorphism-spatial-layout {
+  min-height: 100vh;
+  background: radial-gradient(circle at 30% 20%, #1A2639 0%, #0F1420 50%, #080B12 100%) !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', 'Cairo', sans-serif !important;
+  padding: 3rem 2rem 6rem;
+}
+
+.spatial-frosted-hero {
+  max-width: 1150px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 36px;
+  padding: 4.5rem 4rem;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+  position: relative;
+}
+
+/* 8. NEUMORPHIC SOFT-UI */
+.neumorphism-soft-layout {
+  min-height: 100vh;
+  background: #E0E5EC !important;
+  color: #313B4D !important;
+  font-family: 'Cairo', 'Inter', sans-serif !important;
+  padding: 3rem 2rem 6rem;
+}
+
+.neumorphic-convex-box {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #E0E5EC;
+  border-radius: 36px;
+  box-shadow: 20px 20px 60px #bec3c9, -20px -20px 60px #ffffff;
+  padding: 4rem 3.5rem;
+  position: relative;
+}
+
+/* 9. CONTEMPORARY PRODUCT BENTO PLATFORM (HIGH-END MODERN SAAS) */
+.contemporary-bento-layout {
+  min-height: 100vh;
+  background: #090D16 !important;
+  color: #F1F5F9 !important;
+  font-family: 'Inter', 'Cairo', sans-serif !important;
+  padding: 3rem 2rem 6rem;
+}
+
+.bento-hero-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #111827;
+  border: 1px solid #1F2937;
+  border-radius: 24px;
+  padding: 4rem 3.5rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  position: relative;
+}

@@ -272,7 +272,7 @@
   }
 
   // =========================================================================
-  // 7. MASTER ARCHITECTURAL ROUTER (16 DISTINCT VISUAL PARADIGMS)
+  // 7. MASTER ARCHITECTURAL ROUTER (DISTINCT VISUAL PARADIGMS)
   // =========================================================================
   function renderSiteBody(s) {
     const container = document.getElementById('siteViewport');
@@ -282,112 +282,160 @@
     const cat = (s.cat || '').toLowerCase();
 
     // 1. Vintage Operating System (Windows 95, Macintosh, System 7)
-    if (id.includes('win95') || id.includes('windows') || id.includes('macintosh') || id.includes('retro-desktop')) {
+    if (id.includes('win95') || id.includes('windows-95') || id.includes('macintosh') || id.includes('system-7')) {
       container.innerHTML = renderWindows95FullscreenDesktop(s);
       initWin95DesktopScripts(s);
       return;
     }
 
-    // 2. Phosphor CRT Terminal (CRT, Terminal, MS-DOS, Pip-Boy, Unix)
-    if (id.includes('terminal') || id.includes('crt') || id.includes('msdos') || id.includes('unix') || id.includes('pipboy') || id.includes('mainframe') || id.includes('teletext')) {
+    // 2. Phosphor CRT / CLI Terminal
+    if (id.includes('terminal') || id.includes('crt') || id.includes('msdos') || id.includes('command-prompt') || id.includes('teletext') || id.includes('vcr') || id.includes('vhs-camcorder')) {
       container.innerHTML = renderCrtFullscreenTerminal(s);
       initCrtTerminalScripts(s);
       return;
     }
 
-    // 3. Swiss International Typographic Archive (Swiss, International, Grid)
-    if (id.includes('swiss') || id.includes('helvetica') || id.includes('international-strict')) {
-      container.innerHTML = renderSwissPosterArchitecture(s);
-      return;
-    }
-
-    // 4. Bauhaus Dessau Workshop (Bauhaus, Constructivism, Suprematism, De Stijl)
-    if (id.includes('bauhaus') || id.includes('constructiv') || id.includes('supremat') || id.includes('de-stijl') || id.includes('malevich')) {
-      container.innerHTML = renderBauhausWorkshopPlatform(s);
-      return;
-    }
-
-    // 5. Islamic & Andalusian Palace Architecture (Andalusian, Moorish, Islamic, Zellige, Ottoman, Persian)
-    if (id.includes('andalus') || id.includes('islamic') || id.includes('zellige') || id.includes('moroccan') || id.includes('ottoman') || id.includes('persian') || id.includes('arabesque')) {
-      container.innerHTML = renderAndalusianPalacePlatform(s);
-      return;
-    }
-
-    // 6. Neo-Asiri Heritage Cultural Monument (Asiri, Najdi, Saudi Heritage)
-    if (id.includes('asiri') || id.includes('najdi') || id.includes('farasan') || id.includes('yamani') || (cat === 'cultural' && id.includes('saudi'))) {
-      container.innerHTML = renderNeoAsiriHeritagePlatform(s);
-      return;
-    }
-
-    // 7. Art Deco Luxury Salon (Art Deco, Gatsby, Roaring 20s, Luxury Gold)
-    if (id.includes('art-deco') || id.includes('deco') || id.includes('gatsby') || id.includes('broadway') || id.includes('roaring') || (cat === 'luxury' && id.includes('gold'))) {
-      container.innerHTML = renderArtDecoSalonPlatform(s);
-      return;
-    }
-
-    // 8. Memphis Milano 80s Postmodern Studio (Memphis, 80s Pop, Milano, Postmodern)
-    if (id.includes('memphis') || id.includes('milano') || id.includes('postmodern-irony') || id.includes('80s-pop')) {
-      container.innerHTML = renderMemphisMilanoStudio(s);
-      return;
-    }
-
-    // 9. Japanese Wabi-Sabi Zen Sanctuary (Zen, Wabi-Sabi, Muji, Ukiyo-e, Origami)
-    if (id.includes('zen') || id.includes('wabi') || id.includes('muji') || id.includes('ukiyo') || id.includes('origami') || id.includes('japanese')) {
-      container.innerHTML = renderJapaneseZenSanctuary(s);
-      return;
-    }
-
-    // 10. Technical Blueprint CAD Drafting (Blueprint, Schematic, PCB, Engineering)
-    if (id.includes('blueprint') || id.includes('schematic') || id.includes('cad') || id.includes('circuit') || id.includes('pcb') || id.includes('drafting')) {
-      container.innerHTML = renderTechnicalBlueprintCad(s);
-      return;
-    }
-
-    // 11. Dieter Rams / Braun Functional Industrial (Dieter Rams, Braun, German Industrial)
-    if (id.includes('dieter') || id.includes('rams') || id.includes('braun') || id.includes('sony-walkman') || id.includes('siemens')) {
-      container.innerHTML = renderDieterRamsBraunConsole(s);
-      return;
-    }
-
-    // 12. Steampunk & Victorian Clockwork (Steampunk, Victorian, Brass, Clockwork)
-    if (id.includes('steampunk') || id.includes('victorian') || id.includes('clockwork') || id.includes('brass')) {
-      container.innerHTML = renderSteampunkClockworkAtelier(s);
-      return;
-    }
-
-    // 13. Y2K Cyber Chrome Pop (Y2K, Chrome, Metallic, Cyber-Pop, Liquid Metal)
-    if (id.includes('y2k') || id.includes('chrome') || id.includes('vaporwave') || id.includes('synthwave') || id.includes('liquid-metal')) {
-      container.innerHTML = renderY2kCyberChromePop(s);
-      return;
-    }
-
-    // 14. Pixel Art & Retro Arcade (Pixel, 8-Bit, 16-Bit, Arcade, Gameboy, Tamagotchi)
-    if (id.includes('pixel') || id.includes('8bit') || id.includes('16bit') || id.includes('arcade') || id.includes('tamagotchi') || id.includes('gameboy')) {
+    // 3. Pixel Art & Retro Gaming
+    if (id.includes('pixel') || id.includes('8bit') || id.includes('16bit') || id.includes('game-boy') || id.includes('tamagotchi') || id.includes('low-poly-ps1')) {
       container.innerHTML = renderPixelArtRetroArcade(s);
       return;
     }
 
-    // 15. Haute Couture Editorial Magazine (Editorial, Vogue, Publishing, Broadsheet, Tabloid)
-    if (cat === 'editorial' || id.includes('vogue') || id.includes('editorial') || id.includes('broadsheet') || id.includes('magazine') || id.includes('oxford') || id.includes('monograph')) {
+    // 4. Y2K / Millennium / Vaporwave / Synthwave
+    if (id.includes('y2k') || id.includes('vaporwave') || id.includes('synthwave') || id.includes('dreamcast') || id.includes('flash-animation') || id.includes('geocities') || id.includes('neocities')) {
+      container.innerHTML = renderY2kCyberChromePop(s);
+      return;
+    }
+
+    // 5. Tactile Skeuomorphism
+    if (id.includes('ios-6') || id.includes('skeuomorph') || id.includes('wood-grain') || id.includes('leather')) {
+      container.innerHTML = renderTactileSkeuomorphPlatform(s);
+      return;
+    }
+
+    // 6. Neo-Asiri & Arabian Vernacular
+    if (id.includes('asiri') || id.includes('najdi') || id.includes('hijazi') || id.includes('farasan') || id.includes('yamani') || (cat.includes('cultural') && (id.includes('saudi') || id.includes('arabic')))) {
+      container.innerHTML = renderNeoAsiriHeritagePlatform(s);
+      return;
+    }
+
+    // 7. Islamic & Andalusian Moorish Palace
+    if (id.includes('andalus') || id.includes('islamic') || id.includes('zellige') || id.includes('moroccan') || id.includes('ottoman') || id.includes('persian') || id.includes('diwani') || id.includes('arabesque')) {
+      container.innerHTML = renderAndalusianPalacePlatform(s);
+      return;
+    }
+
+    // 8. Japanese Zen & Wabi-Sabi
+    if (id.includes('zen') || id.includes('wabi') || id.includes('muji') || id.includes('ukiyo') || id.includes('origami') || id.includes('japanese') || id.includes('korean') || id.includes('dancheong')) {
+      container.innerHTML = renderJapaneseZenSanctuary(s);
+      return;
+    }
+
+    // 9. Technical Blueprint CAD Drafting
+    if (id.includes('blueprint') || id.includes('schematic') || id.includes('circuit') || id.includes('pcb') || id.includes('microchip') || id.includes('drafting')) {
+      container.innerHTML = renderTechnicalBlueprintCad(s);
+      return;
+    }
+
+    // 10. Dieter Rams / Braun Industrial
+    if (id.includes('dieter') || id.includes('rams') || id.includes('braun') || id.includes('walkman') || id.includes('siemens')) {
+      container.innerHTML = renderDieterRamsBraunConsole(s);
+      return;
+    }
+
+    // 11. Steampunk & Clockwork Atelier
+    if (id.includes('steampunk') || id.includes('clockwork') || id.includes('dieselpunk') || id.includes('victorian-engraving') || id.includes('brass')) {
+      container.innerHTML = renderSteampunkClockworkAtelier(s);
+      return;
+    }
+
+    // 12. Scientific Telemetry & Mission Control
+    if (id.includes('apollo') || id.includes('scada') || id.includes('cockpit') || id.includes('telemetry') || id.includes('oscilloscope') || id.includes('radar') || id.includes('geiger') || id.includes('seismic') || id.includes('particle-physics') || id.includes('radio-spectrum')) {
+      container.innerHTML = renderScientificTelemetryConsole(s);
+      return;
+    }
+
+    // 13. Bauhaus & De Stijl
+    if (id.includes('bauhaus') || id.includes('de-stijl') || id.includes('mondrian') || id.includes('constructiv') || id.includes('supremat') || id.includes('malevich')) {
+      container.innerHTML = renderBauhausWorkshopPlatform(s);
+      return;
+    }
+
+    // 14. Art Deco Salon
+    if (id.includes('art-deco') || id.includes('deco') || id.includes('broadway') || id.includes('gatsby') || id.includes('roaring')) {
+      container.innerHTML = renderArtDecoSalonPlatform(s);
+      return;
+    }
+
+    // 15. Memphis Milano & Pop Art Studio
+    if (id.includes('memphis') || id.includes('milano') || id.includes('pop-art') || id.includes('postmodern-irony')) {
+      container.innerHTML = renderMemphisMilanoStudio(s);
+      return;
+    }
+
+    // 16. Dada & Surrealist Collage
+    if (id.includes('dada') || id.includes('surreal') || id.includes('ransom-note') || id.includes('expressionism') || id.includes('fauvism')) {
+      container.innerHTML = renderDadaSurrealistCollage(s);
+      return;
+    }
+
+    // 17. Classical Fine Art Salon
+    if (id.includes('renaissance') || id.includes('romanticism') || id.includes('rococo') || id.includes('mannerism') || id.includes('wiener-werkstatte') || id.includes('impressionism') || id.includes('art-nouveau') || id.includes('ancient-civilization') || id.includes('egyptian') || id.includes('cuneiform') || id.includes('navajo') || id.includes('mandala') || id.includes('mesopotamian')) {
+      container.innerHTML = renderClassicalFineArtSalon(s);
+      return;
+    }
+
+    // 18. Nature - Marine & Ocean Sanctuary (Coral Reefs, Deep Ocean, Marine Life)
+    if (id.includes('coral') || id.includes('ocean') || id.includes('sea') || id.includes('bathyscaphe') || id.includes('water') || id.includes('marine') || id.includes('pebble') || id.includes('raindrop') || id.includes('mangrove')) {
+      container.innerHTML = renderMarineOceanSanctuary(s);
+      return;
+    }
+
+    // 19. Nature - Biophilic & Flora Sanctuary
+    if (cat.includes('nature') || id.includes('biophilic') || id.includes('solarpunk') || id.includes('botanical') || id.includes('forest') || id.includes('fungi') || id.includes('moss') || id.includes('meadow') || id.includes('rainforest') || id.includes('savanna') || id.includes('tundra') || id.includes('flora') || id.includes('earth') || id.includes('organic')) {
+      container.innerHTML = renderBiophilicVoronoiSanctuary(s);
+      return;
+    }
+
+    // 20. Haute Luxury & Quiet Luxury Atelier
+    if (cat.includes('luxury') || id.includes('luxury') || id.includes('old-money') || id.includes('velvet') || id.includes('champagne') || id.includes('marble') || id.includes('jewelry') || id.includes('perfumery') || id.includes('concierge') || id.includes('horology') || id.includes('banking') || id.includes('yacht')) {
+      container.innerHTML = renderHauteLuxuryAtelier(s);
+      return;
+    }
+
+    // 21. Editorial Publishing & Broadsheet Gazette
+    if (cat.includes('editorial') || id.includes('editorial') || id.includes('vogue') || id.includes('swiss') || id.includes('broadside') || id.includes('paperback') || id.includes('monograph') || id.includes('lexicon') || id.includes('broadsheet') || id.includes('tabloid') || id.includes('yellow-journalism') || id.includes('parchment') || id.includes('typewriter') || id.includes('catalog') || id.includes('drop-cap')) {
       container.innerHTML = renderEditorialMagazineLayout(s);
       return;
     }
 
-    // 16. Tactical Cyberpunk & Sci-Fi HUD (Cyberpunk, Sci-Fi, HUD, Matrix, Space)
-    if (cat === 'sci-fi' || id.includes('cyber') || id.includes('hud') || id.includes('tactical') || id.includes('matrix') || id.includes('radar') || id.includes('space')) {
+    // 22. Tactical Cyberpunk & Holographic Sci-Fi HUD
+    if (cat.includes('sci-fi') || id.includes('cyber') || id.includes('hud') || id.includes('matrix') || id.includes('space') || id.includes('dyson') || id.includes('quantum') || id.includes('nanotech') || id.includes('holograph') || id.includes('biopunk') || id.includes('xenomorph') || id.includes('transhuman') || id.includes('tesseract')) {
       container.innerHTML = renderCyberpunkHudPlatform(s);
       initCyberpunkScripts(s);
       return;
     }
 
-    // 17. Biophilic Organic Sanctuary (Biophilic, Solarpunk, Botanical, Nature, Rainforest)
-    if (cat === 'nature' || id.includes('biophilic') || id.includes('solarpunk') || id.includes('botanical') || id.includes('organic') || id.includes('rainforest')) {
-      container.innerHTML = renderBiophilicVoronoiSanctuary(s);
+    // 23. Actual Neo-Brutalism (ONLY for genuine brutalist styles!)
+    if (id.includes('brutal')) {
+      container.innerHTML = renderNeoBrutalistRawPlatform(s);
       return;
     }
 
-    // 18. Neo-Brutalist Raw Developer Platform (Default Modern UI)
-    container.innerHTML = renderNeoBrutalistRawPlatform(s);
+    // 24. Neumorphism
+    if (id.includes('neumorph') || id.includes('claymorph')) {
+      container.innerHTML = renderNeumorphismSoft(s);
+      return;
+    }
+
+    // 25. Glassmorphism & Spatial UI
+    if (id.includes('glass') || id.includes('spatial') || id.includes('vision-os') || id.includes('frosted')) {
+      container.innerHTML = renderGlassmorphismSpatial(s);
+      return;
+    }
+
+    // 26. Contemporary Product Bento Platform (Modern UI SaaS)
+    container.innerHTML = renderContemporaryBentoPlatform(s);
   }
 
   // Author Seal HTML Component (Dignified Golden Seal, Zero Stock Photo Avatars)
@@ -1333,7 +1381,7 @@
 
   function initCyberpunkScripts(s) {
     const radarCanvas = document.getElementById('cyberRadarCanvas');
-    if (radarCanvas) {
+    if (radarCanvas && radarCanvas.getContext) {
       const ctx = radarCanvas.getContext('2d');
       let angle = 0;
       function drawRadar() {
@@ -1359,7 +1407,9 @@
         ctx.stroke();
 
         angle += 0.05;
-        requestAnimationFrame(drawRadar);
+        if (typeof requestAnimationFrame !== 'undefined') {
+          requestAnimationFrame(drawRadar);
+        }
       }
       drawRadar();
     }
@@ -1461,6 +1511,432 @@
         </div>
 
         ${getAuthorSealHtml()}
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 19: MARINE & CORAL REEF AQUATIC SANCTUARY
+  // =========================================================================
+  function renderMarineOceanSanctuary(s) {
+    return `
+      <div class="marine-ocean-layout">
+        <!-- SVG FLUID WAVE BANNER -->
+        <div class="marine-wave-divider">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="width: 100%; height: 60px; display: block;">
+            <path d="M0,0 C150,90 350,-40 500,45 C650,130 900,10 1200,50 L1200,120 L0,120 Z" fill="rgba(80, 227, 194, 0.25)"></path>
+            <path d="M0,20 C200,100 450,-10 700,65 C950,140 1050,30 1200,70 L1200,120 L0,120 Z" fill="rgba(14, 48, 71, 0.6)"></path>
+          </svg>
+        </div>
+
+        <div class="marine-glass-hero">
+          <div class="marine-species-pill">
+            <span>🐠</span>
+            <span>نظام بيئي بحري ومرجاني فائق التنوع // ${s.era}</span>
+          </div>
+
+          <h1 style="font-size: clamp(2.5rem, 5vw, 4.4rem); font-weight: 800; line-height: 1.15; margin: 0 0 1rem; color: #FFF; text-shadow: 0 4px 20px rgba(80, 227, 194, 0.3);">
+            ${s.nameAr}
+          </h1>
+
+          <div style="font-size: 1.25rem; font-weight: 600; color: #50E3C2; margin-bottom: 1.5rem; letter-spacing: 0.5px;">
+            ${s.nameEn} • نمط رقم #${s.num}
+          </div>
+
+          <p style="font-size: 1.2rem; line-height: 1.7; margin: 0 0 2.5rem; max-width: 820px; color: #CFE4EE;">
+            ${s.traits}
+          </p>
+
+          <!-- BIODIVERSITY KPI METRICS -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <div style="background: rgba(4, 18, 30, 0.45); border: 1px solid rgba(80, 227, 194, 0.25); border-radius: 20px; padding: 1.5rem;">
+              <div style="font-size: 2.2rem; font-weight: 800; color: #50E3C2;">4,000+</div>
+              <div style="font-size: 0.9rem; color: #9EC0D2;">أنواع الكائنات البحرية المتكافلة</div>
+            </div>
+            <div style="background: rgba(4, 18, 30, 0.45); border: 1px solid rgba(80, 227, 194, 0.25); border-radius: 20px; padding: 1.5rem;">
+              <div style="font-size: 2.2rem; font-weight: 800; color: #FF7B72;">25%</div>
+              <div style="font-size: 0.9rem; color: #9EC0D2;">من الحياة المحيطية تأوي للشعب المرجانية</div>
+            </div>
+            <div style="background: rgba(4, 18, 30, 0.45); border: 1px solid rgba(80, 227, 194, 0.25); border-radius: 20px; padding: 1.5rem;">
+              <div style="font-size: 2.2rem; font-weight: 800; color: #79C0FF;">100%</div>
+              <div style="font-size: 0.9rem; color: #9EC0D2;">انسيابية عضوية بدون زوايا حادة مصطنعة</div>
+            </div>
+          </div>
+
+          <!-- PALETTE SWATCHES -->
+          <div style="background: rgba(4, 18, 30, 0.5); border: 1px solid rgba(80, 227, 194, 0.2); border-radius: 20px; padding: 1.5rem 2rem; margin-bottom: 2.5rem;">
+            <div style="font-size: 0.9rem; font-weight: 700; color: #50E3C2; margin-bottom: 0.75rem;">تدرجات اللون الطبيعي للشعب والمياه العميقة:</div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              ${s.colors.map(c => `
+                <div style="display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.06); padding: 0.4rem 0.8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15);">
+                  <span style="width: 16px; height: 16px; border-radius: 50%; background: ${c}; display: inline-block;"></span>
+                  <span style="font-family: monospace; font-size: 0.85rem; color: #E2F5F8;">${c}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="mock-btn" style="background: linear-gradient(135deg, #50E3C2 0%, #00B4D8 100%); color: #041B2B; font-weight: 800; border: none; padding: 0.9rem 2.2rem; border-radius: 999px; box-shadow: 0 10px 25px rgba(80, 227, 194, 0.4);" onclick="alert('استكشاف التناغم اللوني والحيوي لنمط ${s.nameAr}')">
+              🌊 استكشاف المحاكاة البحرية
+            </button>
+            <button class="mock-btn" style="background: rgba(255,255,255,0.08); color: #FFF; font-weight: 700; border: 1px solid rgba(255,255,255,0.25); padding: 0.9rem 2rem; border-radius: 999px;" onclick="alert('أفضل استخدام: ${s.bestFor}')">
+              🪸 مجالات الاستخدام الملائمة
+            </button>
+          </div>
+
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 20: HAUTE LUXURY & QUIET LUXURY ATELIER
+  // =========================================================================
+  function renderHauteLuxuryAtelier(s) {
+    return `
+      <div class="haute-luxury-layout">
+        <div class="luxury-salon-box">
+          <div class="luxury-monogram-badge">⚜️</div>
+          <div style="font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.25em; color: #D4AF37; margin-bottom: 1.25rem;">
+            HAUTE ÉLÉGANCE • ARCHETYPE #${s.num} • ${s.era}
+          </div>
+          <h1 style="font-size: clamp(2.6rem, 5vw, 4.5rem); font-family: 'Playfair Display', 'Amiri', serif; font-weight: 700; line-height: 1.15; margin: 0 0 1.25rem; color: #FAF7F2;">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.3rem; font-style: italic; color: #D4AF37; margin-bottom: 2rem; letter-spacing: 0.05em;">
+            ${s.nameEn}
+          </div>
+          <div style="width: 80px; height: 1px; background: #D4AF37; margin: 0 auto 2.5rem; opacity: 0.6;"></div>
+          <p style="font-size: 1.2rem; line-height: 1.8; max-width: 780px; margin: 0 auto 3.5rem; color: #D3CDC2; font-family: 'Amiri', serif;">
+            ${s.traits}
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3.5rem; text-align: right;">
+            <div style="border: 1px solid rgba(212,175,55,0.25); padding: 1.75rem; background: rgba(255,255,255,0.02);">
+              <span style="font-size: 0.8rem; color: #D4AF37; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">I. الحرفية الأزلية</span>
+              <p style="font-size: 0.95rem; line-height: 1.6; margin: 0; color: #BBB3A4;">تناسق هندسي ومسافات هادئة تمنح الواجهة وقاراً وفخامة أزلية.</p>
+            </div>
+            <div style="border: 1px solid rgba(212,175,55,0.25); padding: 1.75rem; background: rgba(255,255,255,0.02);">
+              <span style="font-size: 0.8rem; color: #D4AF37; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">II. النقاء اللوني</span>
+              <p style="font-size: 0.95rem; line-height: 1.6; margin: 0; color: #BBB3A4;">${s.colors.slice(0, 3).join(' • ')} تعكس توازناً مدروساً للمواد الخام النبيلة.</p>
+            </div>
+            <div style="border: 1px solid rgba(212,175,55,0.25); padding: 1.75rem; background: rgba(255,255,255,0.02);">
+              <span style="font-size: 0.8rem; color: #D4AF37; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">III. النخبوية والهدوء</span>
+              <p style="font-size: 0.95rem; line-height: 1.6; margin: 0; color: #BBB3A4;">ملائم لـ: ${s.bestFor}</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1.5rem; justify-content: center;">
+            <button class="mock-btn" style="background: #D4AF37; color: #0E0E10; font-weight: 700; border: none; padding: 1rem 2.5rem; font-family: 'Playfair Display', 'Amiri', serif; font-size: 1rem; letter-spacing: 0.05em;" onclick="alert('استكشاف تفاصيل صالون الفخامة لنمط ${s.nameAr}')">
+              طلب معاينة خاصة
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 21: SCIENTIFIC TELEMETRY & MISSION CONTROL
+  // =========================================================================
+  function renderScientificTelemetryConsole(s) {
+    return `
+      <div class="scientific-telemetry-layout">
+        <div class="telemetry-console-box">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1C3352; padding-bottom: 1.5rem; margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <span style="width: 12px; height: 12px; border-radius: 50%; background: #00FF66; box-shadow: 0 0 10px #00FF66; display: inline-block;"></span>
+              <span style="font-size: 0.9rem; color: #64D2FF; letter-spacing: 1px;">SYSTEM TELEMETRY // ONLINE // NODE #${s.num}</span>
+            </div>
+            <div style="color: #FFB800; font-size: 0.85rem;">FREQ: 1420.405 MHz // UTC LOCK</div>
+          </div>
+
+          <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 700; margin: 0 0 0.75rem; color: #FFFFFF;">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.15rem; color: #00FFCC; margin-bottom: 1.5rem;">
+            ${s.nameEn.toUpperCase()} // CLASS: ${s.era}
+          </div>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: #A0C0D8; max-width: 820px; margin-bottom: 2.5rem;">
+            ${s.traits}
+          </p>
+
+          <div style="display: grid; grid-template-columns: 280px 1fr; gap: 2rem; margin-bottom: 2.5rem; align-items: center;">
+            <div style="text-align: center; background: #060B14; border: 1px solid #1C3352; padding: 1.5rem; border-radius: 8px;">
+              <svg width="180" height="180" viewBox="0 0 200 200" style="margin: 0 auto; display: block;">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#1C3352" stroke-width="2"/>
+                <circle cx="100" cy="100" r="60" fill="none" stroke="#1C3352" stroke-width="1.5"/>
+                <circle cx="100" cy="100" r="30" fill="none" stroke="#1C3352" stroke-width="1"/>
+                <line x1="10" y1="100" x2="190" y2="100" stroke="#1C3352" stroke-width="1"/>
+                <line x1="100" y1="10" x2="100" y2="190" stroke="#1C3352" stroke-width="1"/>
+                <line x1="100" y1="100" x2="170" y2="50" stroke="#00FF66" stroke-width="2"/>
+                <circle cx="140" cy="70" r="4" fill="#00FF66"/>
+              </svg>
+              <div style="font-size: 0.8rem; color: #64D2FF; margin-top: 0.75rem;">RADAR ECHO SWEEPER</div>
+            </div>
+            <div>
+              <div style="background: #060B14; border: 1px solid #1C3352; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                <div style="font-size: 0.8rem; color: #64D2FF; margin-bottom: 0.5rem;">OSCILLOSCOPE WAVE VECTOR:</div>
+                <svg width="100%" height="60" viewBox="0 0 500 60" preserveAspectRatio="none">
+                  <path d="M0,30 Q25,5 50,30 T100,30 T150,30 T200,5 T250,55 T300,30 T350,30 T400,10 T450,50 T500,30" fill="none" stroke="#00FFCC" stroke-width="2"/>
+                </svg>
+              </div>
+              <div style="display: flex; gap: 1rem;">
+                <div style="background: #060B14; border: 1px solid #1C3352; padding: 1rem; border-radius: 6px; flex: 1;">
+                  <span style="font-size: 0.75rem; color: #8AA4BE;">OPTIMAL TARGET:</span>
+                  <div style="font-size: 0.95rem; color: #FFFFFF; font-weight: 700; margin-top: 4px;">${s.bestFor}</div>
+                </div>
+                <div style="background: #060B14; border: 1px solid #1C3352; padding: 1rem; border-radius: 6px; flex: 1;">
+                  <span style="font-size: 0.75rem; color: #8AA4BE;">TELEMETRY STATUS:</span>
+                  <div style="font-size: 0.95rem; color: #00FF66; font-weight: 700; margin-top: 4px;">NOMINAL 100%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem;">
+            <button class="mock-btn" style="background: #00B4D8; color: #060A12; font-weight: 800; border: none; padding: 0.85rem 2rem; border-radius: 4px;" onclick="alert('تشغيل مستشعرات نمط: ${s.nameAr}')">
+              📡 تشغيل القياس عن بُعد
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 22: CLASSICAL FINE ART SALON
+  // =========================================================================
+  function renderClassicalFineArtSalon(s) {
+    return `
+      <div class="classical-fine-art-layout">
+        <div class="fine-art-placard-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E4DACB; padding-bottom: 1.5rem; margin-bottom: 2.5rem;">
+            <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.15em; color: #8A735E;">
+              صالون الفنون الجميلة الكلاسيكية • #${s.num}
+            </div>
+            <div style="font-size: 0.9rem; color: #8A735E;">${s.era}</div>
+          </div>
+          <h1 style="font-size: clamp(2.6rem, 5.2vw, 4.4rem); font-weight: 700; line-height: 1.15; margin: 0 0 1rem; color: #2D251E;">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.35rem; font-style: italic; color: #A0522D; margin-bottom: 2rem;">
+            ${s.nameEn}
+          </div>
+          <p style="font-size: 1.25rem; line-height: 1.85; max-width: 800px; margin: 0 0 3rem; color: #4A3E35;">
+            ${s.traits}
+          </p>
+          <div style="background: #F8F3EA; border: 1px solid #DDD0BD; border-radius: 8px; padding: 2rem; margin-bottom: 3rem;">
+            <div style="font-weight: 700; font-size: 1.1rem; color: #2D251E; margin-bottom: 0.75rem;">لوحة الألوان التشكيلية المعتمدة:</div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              ${s.colors.map(c => `
+                <div style="display: flex; align-items: center; gap: 0.5rem; background: #FFF; padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid #DDD0BD;">
+                  <span style="width: 20px; height: 20px; border-radius: 50%; background: ${c}; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></span>
+                  <span style="font-family: monospace; font-size: 0.9rem; color: #4A3E35;">${c}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <button class="mock-btn" style="background: #2D251E; color: #FAF7F2; font-weight: 700; border: none; padding: 0.9rem 2.2rem; border-radius: 4px;" onclick="alert('تأمل في التكوين البصري والنسب الذهبية لنمط ${s.nameAr}')">
+              🎨 تأمل التكوين البصري
+            </button>
+            <button class="mock-btn" style="background: transparent; color: #2D251E; font-weight: 700; border: 1px solid #2D251E; padding: 0.9rem 2rem; border-radius: 4px;" onclick="alert('ملائم لـ: ${s.bestFor}')">
+              🏛️ التطبيقات الفنية
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 23: DADA & SURREALIST COLLAGE
+  // =========================================================================
+  function renderDadaSurrealistCollage(s) {
+    return `
+      <div class="dada-surrealist-layout">
+        <div class="dada-collage-card">
+          <div style="display: inline-block; background: #000; color: #FFF; font-weight: 900; font-size: 0.85rem; padding: 0.3rem 0.8rem; transform: rotate(-2deg); margin-bottom: 1.5rem;">
+            AVANT-GARDE MANIFESTO #${s.num} // ${s.era}
+          </div>
+          <h1 style="font-size: clamp(2.8rem, 6vw, 4.8rem); font-weight: 900; line-height: 1.05; margin: 0 0 1rem; transform: rotate(1deg); color: #000;">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.4rem; font-weight: 800; color: #D00; margin-bottom: 2rem; text-transform: uppercase;">
+            ${s.nameEn}
+          </div>
+          <div style="border-right: 4px solid #000; padding-right: 1.5rem; margin-bottom: 2.5rem; max-width: 800px;">
+            <p style="font-size: 1.25rem; font-weight: 600; line-height: 1.6; margin: 0; color: #222;">
+              ${s.traits}
+            </p>
+          </div>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+            <div style="background: #FFE600; border: 2px solid #000; padding: 1rem 1.5rem; transform: rotate(-1.5deg);">
+              <strong>كسر القوالب:</strong> فن التحرر من التماثل والواقعية
+            </div>
+            <div style="background: #00E5FF; border: 2px solid #000; padding: 1rem 1.5rem; transform: rotate(1.2deg);">
+              <strong>المجال:</strong> ${s.bestFor}
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <button class="mock-btn" style="background: #D00; color: #FFF; font-weight: 900; border: 3px solid #000; box-shadow: 4px 4px 0px #000; padding: 0.85rem 2rem; border-radius: 0;" onclick="alert('انطلق مع ثورة الكولاج لنمط ${s.nameAr}')">
+              ✂️ تجربة الكولاج الطليعي
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 24: TACTILE SKEUOMORPHISM
+  // =========================================================================
+  function renderTactileSkeuomorphPlatform(s) {
+    return `
+      <div class="tactile-skeuomorph-layout">
+        <div class="skeuo-linen-plate">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(0,0,0,0.4); box-shadow: 0 1px 0 rgba(255,255,255,0.1); padding-bottom: 1.5rem; margin-bottom: 2rem;">
+            <span style="font-size: 0.95rem; font-weight: 700; color: #B0B8C0; text-shadow: 0 1px 2px #000;">
+              TACTILE SKEUOMORPHISM UI • #${s.num}
+            </span>
+            <span style="background: linear-gradient(180deg, #505862 0%, #353C44 100%); border: 1px solid #202428; border-radius: 6px; padding: 0.35rem 0.9rem; font-size: 0.85rem; font-weight: 700; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.4); text-shadow: 0 1px 1px #000;">
+              ${s.era}
+            </span>
+          </div>
+          <h1 style="font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.15; margin: 0 0 1rem; color: #FFF; text-shadow: 0 2px 4px rgba(0,0,0,0.7);">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.25rem; font-weight: 600; color: #7CB9E8; margin-bottom: 2rem; text-shadow: 0 1px 2px #000;">
+            ${s.nameEn}
+          </div>
+          <p style="font-size: 1.2rem; line-height: 1.7; max-width: 800px; margin: 0 0 2.5rem; color: #D0D6DC; text-shadow: 0 1px 2px #000;">
+            ${s.traits}
+          </p>
+          <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+            <button class="mock-btn" style="background: linear-gradient(180deg, #4A90E2 0%, #2060A8 100%); color: #FFF; font-weight: 800; border: 1px solid #144075; border-radius: 8px; padding: 0.9rem 2.2rem; box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 4px 8px rgba(0,0,0,0.5); text-shadow: 0 1px 2px rgba(0,0,0,0.6);" onclick="alert('لمس الواقعية المادية لنمط ${s.nameAr}')">
+              🔘 معاينة الزر المجسم الملموس
+            </button>
+            <button class="mock-btn" style="background: linear-gradient(180deg, #5A626A 0%, #3E444B 100%); color: #FFF; font-weight: 700; border: 1px solid #2A2E33; border-radius: 8px; padding: 0.9rem 2rem; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.4); text-shadow: 0 1px 2px #000;" onclick="alert('مجال التطبيق: ${s.bestFor}')">
+              📦 استخدامات الماتريال الواقعي
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 25: MODERN GLASSMORPHISM & SPATIAL
+  // =========================================================================
+  function renderGlassmorphismSpatial(s) {
+    return `
+      <div class="glassmorphism-spatial-layout">
+        <div class="spatial-frosted-hero">
+          <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 0.4rem 1.2rem; border-radius: 999px; font-size: 0.88rem; margin-bottom: 1.5rem;">
+            <span>✨</span>
+            <span>SPATIAL FROSTED GLASS • ARCHETYPE #${s.num}</span>
+          </div>
+          <h1 style="font-size: clamp(2.5rem, 5vw, 4.4rem); font-weight: 800; line-height: 1.15; margin: 0 0 1rem; color: #FFF; text-shadow: 0 4px 30px rgba(255,255,255,0.2);">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.3rem; font-weight: 600; color: #A5B4FC; margin-bottom: 2rem;">
+            ${s.nameEn} // ${s.era}
+          </div>
+          <p style="font-size: 1.2rem; line-height: 1.7; max-width: 820px; margin: 0 0 2.5rem; color: #E2E8F0;">
+            ${s.traits}
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="mock-btn" style="background: rgba(255,255,255,0.18); backdrop-filter: blur(12px); color: #FFF; font-weight: 700; border: 1px solid rgba(255,255,255,0.3); padding: 0.9rem 2.2rem; border-radius: 999px; box-shadow: 0 8px 25px rgba(0,0,0,0.3);" onclick="alert('تفاعل مع الزجاج الضبابي لنمط ${s.nameAr}')">
+              🔍 تفاعل مع السطح الزجاجي
+            </button>
+            <button class="mock-btn" style="background: transparent; color: #FFF; font-weight: 700; border: 1px solid rgba(255,255,255,0.2); padding: 0.9rem 2rem; border-radius: 999px;" onclick="alert('الاستخدام الأمثل: ${s.bestFor}')">
+              💡 مجالات التطبيق
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 26: NEUMORPHISM SOFT-UI
+  // =========================================================================
+  function renderNeumorphismSoft(s) {
+    return `
+      <div class="neumorphism-soft-layout">
+        <div class="neumorphic-convex-box">
+          <div style="font-size: 0.88rem; font-weight: 700; color: #64748B; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 1px;">
+            SOFT-UI EMBOSSED PLASTIC • ARCHETYPE #${s.num}
+          </div>
+          <h1 style="font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.15; margin: 0 0 1rem; color: #1E293B;">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.25rem; font-weight: 600; color: #475569; margin-bottom: 2rem;">
+            ${s.nameEn} (${s.era})
+          </div>
+          <p style="font-size: 1.2rem; line-height: 1.7; max-width: 800px; margin: 0 0 2.5rem; color: #334155;">
+            ${s.traits}
+          </p>
+          <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+            <button class="mock-btn" style="background: #E0E5EC; color: #1E293B; font-weight: 700; border: none; border-radius: 20px; padding: 1rem 2.5rem; box-shadow: 6px 6px 14px #bec3c9, -6px -6px 14px #ffffff;" onclick="alert('ضغط زر مجوف نيوومورفيك لنمط ${s.nameAr}')">
+              🔘 زر ناعم بارز (Convex)
+            </button>
+            <button class="mock-btn" style="background: #E0E5EC; color: #475569; font-weight: 700; border: none; border-radius: 20px; padding: 1rem 2.2rem; box-shadow: inset 4px 4px 8px #bec3c9, inset -4px -4px 8px #ffffff;" onclick="alert('مجال التطبيق: ${s.bestFor}')">
+              🕳️ مساحة غائرة (Concave)
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PARADIGM 27: CONTEMPORARY PRODUCT BENTO PLATFORM (MODERN SAAS)
+  // =========================================================================
+  function renderContemporaryBentoPlatform(s) {
+    return `
+      <div class="contemporary-bento-layout">
+        <div class="bento-hero-frame">
+          <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); color: #60A5FA; font-size: 0.85rem; font-weight: 700; padding: 0.35rem 1rem; border-radius: 999px; margin-bottom: 1.5rem;">
+            <span>⚡</span>
+            <span>MODERN PRODUCT ARCHITECTURE • #${s.num}</span>
+          </div>
+          <h1 style="font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.15; margin: 0 0 1rem; color: #F8FAFC;">
+            ${s.nameAr}
+          </h1>
+          <div style="font-size: 1.25rem; font-weight: 600; color: #94A3B8; margin-bottom: 2rem;">
+            ${s.nameEn} // ${s.era}
+          </div>
+          <p style="font-size: 1.2rem; line-height: 1.7; max-width: 820px; margin: 0 0 2.5rem; color: #CBD5E1;">
+            ${s.traits}
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+            <div style="background: #1A2234; border: 1px solid #283548; border-radius: 16px; padding: 1.5rem;">
+              <div style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 0.5rem;">المجال المستهدف:</div>
+              <div style="font-size: 1.1rem; font-weight: 700; color: #F8FAFC;">${s.bestFor}</div>
+            </div>
+            <div style="background: #1A2234; border: 1px solid #283548; border-radius: 16px; padding: 1.5rem;">
+              <div style="font-size: 0.85rem; color: #94A3B8; margin-bottom: 0.5rem;">المرجعية الفيزيائية لـ CSS:</div>
+              <code style="font-family: monospace; font-size: 0.85rem; color: #60A5FA;">${s.css}</code>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="mock-btn" style="background: #3B82F6; color: #FFF; font-weight: 700; border: none; padding: 0.85rem 2.2rem; border-radius: 12px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);" onclick="alert('استكشاف تصميم: ${s.nameAr}')">
+              🚀 ابدأ الإنتاج
+            </button>
+          </div>
+          ${getAuthorSealHtml()}
+        </div>
       </div>
     `;
   }
