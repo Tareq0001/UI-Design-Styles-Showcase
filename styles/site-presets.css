@@ -612,14 +612,21 @@ body.has-hud {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
+  gap: 1.25rem;
 }
 
-.mock-manifesto-avatar {
-  width: 46px;
-  height: 46px;
+.author-seal {
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  border: 2px solid var(--theme-accent, #3B82F6);
+  background: linear-gradient(135deg, #D4AF37 0%, #AA771C 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #FFF;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.35);
 }
 
 /* Footer */
@@ -1003,4 +1010,400 @@ body.has-hud {
     right: 20px;
     width: auto;
   }
+}
+
+/* ==========================================================================
+   5. SPECIALIZED FULL-PAGE ARCHETYPE LAYOUTS
+   ========================================================================== */
+
+/* A. WINDOWS 95 FULLSCREEN DESKTOP OS */
+.win95-desktop-fullscreen {
+  min-height: calc(100vh - 56px);
+  background: #008080 !important;
+  color: #000 !important;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif !important;
+  position: relative;
+  padding: 1.5rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.win95-icons-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 90px;
+  position: relative;
+  z-index: 5;
+}
+
+.win95-icon-btn {
+  background: transparent;
+  border: 1px dotted transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #FFF;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 6px 4px;
+  font-family: inherit;
+}
+
+.win95-icon-btn:hover, .win95-icon-btn:focus {
+  background: #000080;
+  border-color: #FFFF00;
+}
+
+.win95-icon-glyph {
+  font-size: 2.2rem;
+}
+
+.win95-main-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(760px, 92vw);
+  background: #C0C0C0;
+  border-top: 2.5px solid #FFF;
+  border-left: 2.5px solid #FFF;
+  border-right: 2.5px solid #000;
+  border-bottom: 2.5px solid #000;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+
+.win95-menu-bar {
+  display: flex;
+  gap: 14px;
+  padding: 3px 8px;
+  background: #C0C0C0;
+  border-bottom: 1px solid #808080;
+  font-size: 0.82rem;
+}
+
+.win95-content-area {
+  padding: 1.25rem;
+  background: #FFF;
+  margin: 6px;
+  border: 2px inset #808080;
+  max-height: 480px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #000;
+}
+
+.win95-taskbar-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: #C0C0C0;
+  border-top: 2px solid #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px;
+  z-index: 1000;
+}
+
+.win95-start-menu-popup {
+  position: fixed;
+  bottom: 40px;
+  right: 6px;
+  width: 240px;
+  background: #C0C0C0;
+  border-top: 2px solid #FFF;
+  border-left: 2px solid #FFF;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+}
+
+.win95-start-menu-popup.open {
+  display: flex;
+}
+
+.win95-start-banner {
+  background: #000080;
+  color: #FFF;
+  padding: 8px 12px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 1px;
+}
+
+.win95-menu-item {
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: right;
+  font-family: inherit;
+}
+
+.win95-menu-item:hover {
+  background: #000080;
+  color: #FFF;
+}
+
+/* B. CRT PHOSPHOR TERMINAL FULLSCREEN */
+.crt-fullscreen-terminal {
+  min-height: calc(100vh - 56px);
+  background: #030803 !important;
+  color: #33FF33 !important;
+  font-family: 'JetBrains Mono', 'VT323', monospace !important;
+  padding: 2.5rem 2rem 5rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 0 7px rgba(51, 255, 51, 0.7);
+}
+
+.crt-scanline-fx {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.crt-vignette-fx {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+  pointer-events: none;
+  z-index: 21;
+}
+
+.crt-terminal-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.crt-quick-btns {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.crt-quick-btn {
+  background: transparent;
+  color: #33FF33;
+  border: 1px solid #33FF33;
+  padding: 0.4rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-shadow: inherit;
+  box-shadow: 0 0 10px rgba(51, 255, 51, 0.2);
+}
+
+.crt-quick-btn:hover {
+  background: #33FF33;
+  color: #000;
+  text-shadow: none;
+}
+
+/* C. SWISS POSTER ARCHITECTURE */
+.swiss-poster-layout {
+  min-height: 100vh;
+  background: #F4F4F0 !important;
+  color: #0A0A0A !important;
+  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif !important;
+  padding: 4rem 2rem 6rem;
+  box-sizing: border-box;
+}
+
+.swiss-poster-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.swiss-grid-header {
+  border-bottom: 4px solid #0A0A0A;
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.swiss-giant-num {
+  font-size: clamp(4rem, 10vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -3px;
+  color: #D90429;
+}
+
+.swiss-columns-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 3rem;
+  border-bottom: 2px solid #0A0A0A;
+  padding-bottom: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.swiss-photo-frame {
+  background: #000;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.swiss-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(120%);
+  display: block;
+}
+
+/* D. HAUTE EDITORIAL MAGAZINE LAYOUT */
+.editorial-magazine-layout {
+  min-height: 100vh;
+  background: #FAF9F6 !important;
+  color: #1A1A1A !important;
+  font-family: 'Playfair Display', 'Amiri', serif !important;
+  padding: 3rem 2rem 6rem;
+}
+
+.editorial-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.editorial-masthead {
+  text-align: center;
+  border-bottom: 2px solid #1A1A1A;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.editorial-masthead h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1;
+}
+
+.editorial-issue-line {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+  opacity: 0.8;
+}
+
+.editorial-hero-spread {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.editorial-drop-cap::first-letter {
+  font-size: 4.8rem;
+  float: right;
+  line-height: 0.8;
+  margin-left: 14px;
+  margin-top: 6px;
+  font-family: 'Playfair Display', 'Amiri', serif;
+  color: #991B1B;
+}
+
+.editorial-pull-quote {
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: 1.5;
+  border-top: 2px solid #D4AF37;
+  border-bottom: 2px solid #D4AF37;
+  padding: 1.75rem 0;
+  margin: 3rem 0;
+  text-align: center;
+  color: #1A1A1A;
+}
+
+/* E. NEO-BRUTALIST RAW DEVELOPER PLATFORM */
+.brutalist-raw-layout {
+  background: #FFFDF0 !important;
+  color: #000 !important;
+  font-family: 'Space Grotesk', 'Cairo', sans-serif !important;
+  padding: 0 0 6rem 0;
+}
+
+.brutal-hero-block {
+  border: 4px solid #000;
+  background: #FFE600;
+  box-shadow: 8px 8px 0px #000;
+  padding: 3rem;
+  margin: 3rem auto;
+  max-width: 1200px;
+  position: relative;
+}
+
+.brutal-sticker {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  background: #FF5E94;
+  color: #FFF;
+  border: 3px solid #000;
+  font-weight: 900;
+  padding: 6px 16px;
+  transform: rotate(-3deg);
+  box-shadow: 3px 3px 0px #000;
+}
+
+.brutal-code-box {
+  background: #000;
+  color: #00E5FF;
+  border: 3.5px solid #000;
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 6px 6px 0px #000;
+  margin: 2rem 0;
+}
+
+/* F. NEO-ASIRI HERITAGE PLATFORM */
+.asiri-heritage-layout {
+  background: #231710 !important;
+  color: #FDFDF8 !important;
+  font-family: 'Amiri', 'Cairo', serif !important;
+  padding-bottom: 5rem;
+}
+
+.asiri-hero-tower {
+  border: 3px solid #5A4739;
+  border-top: 8px solid #D62828;
+  background: #3B2A20;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  padding: 3rem;
+  border-radius: 4px;
+  margin: 2rem auto;
+  max-width: 1250px;
 }
