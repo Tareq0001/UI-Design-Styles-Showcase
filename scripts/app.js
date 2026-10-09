@@ -463,6 +463,12 @@
     if (codeEl) {
       codeEl.textContent = theme.cssSnippet;
     }
+
+    const visitSiteBtn = document.getElementById('inspectorVisitSiteBtn');
+    if (visitSiteBtn) {
+      visitSiteBtn.href = `pages/${theme.id}.html`;
+      visitSiteBtn.innerHTML = `<span>🚀 ${isAr ? 'زيارة الموقع المتكامل المستقل للنمط (' + theme.nameAr + ')' : 'Visit Dedicated Website (' + theme.nameEn + ')'}</span>`;
+    }
   }
 
   // Render Micro Components Lab
@@ -642,12 +648,17 @@
           <span>🔤</span>
           <code>${style.font}</code>
         </div>
+        <div class="card-actions-row" style="margin-bottom: 0.4rem;">
+          <a href="pages/${style.id}.html" target="_blank" class="card-action-btn" style="text-decoration: none; background: #2563EB; color: #FFF; font-weight: 800; width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.55rem; border-radius: 6px; box-shadow: 0 2px 8px rgba(37,99,235,0.3);">
+            <span>🚀 ${isAr ? 'زيارة الموقع المتكامل للنمط' : 'Visit Dedicated Website'}</span>
+          </a>
+        </div>
         <div class="card-actions-row">
           <button class="card-action-btn apply-btn" data-action="apply">
-            <span>🎨 ${isAr ? 'طبق على كامل الموقع' : 'Apply to Site'}</span>
+            <span>🎨 ${isAr ? 'طبق على الاستوديو' : 'Apply to Studio'}</span>
           </button>
           <button class="card-action-btn inspect-btn" data-action="inspect">
-            <span>🔍 ${isAr ? 'فحص التفاصيل' : 'Inspect Spec'}</span>
+            <span>🔍 ${isAr ? 'المواصفات' : 'Inspect Spec'}</span>
           </button>
         </div>
       `;
@@ -723,6 +734,13 @@
       sw.onclick = () => copyText(hex, isAr ? `✓ تم نسخ كود اللون ${hex}` : `✓ Copied HEX ${hex}`);
       swatchesStrip.appendChild(sw);
     });
+
+    // Modal Dedicated Site Link Button
+    const visitBtn = document.getElementById('modalVisitSiteBtn');
+    if (visitBtn) {
+      visitBtn.href = `pages/${style.id}.html`;
+      visitBtn.innerHTML = `<span>🚀 ${isAr ? 'فتح الموقع المستقل المصمم بهذا النمط (' + style.nameAr + ')' : 'Open Dedicated Website (' + style.nameEn + ')'}</span>`;
+    }
 
     // Modal Apply Button
     const applyBtn = document.getElementById('modalApplySiteBtn');
